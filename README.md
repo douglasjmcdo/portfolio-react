@@ -4,7 +4,4 @@ I retain copyright for all art and code.
 
 ## Functionality:
 Displays art projects (both individual images and links to sub-pages) in a responsive grid
-Sort or filter by date, medium, or industry
-
-## Sub-pages:
-Click through for a full page of documentation on a given project. May include text, images, screen captures, or video.
+Sort or filter by title, date, medium, or industry.

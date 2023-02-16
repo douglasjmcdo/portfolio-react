@@ -1,0 +1,103 @@
+{
+    "entries": [
+      {
+        "id": "1",
+        "title": "Initial Mockups 1",
+        "type": "individual",
+        "medium": [
+          "digital",
+          "firealpaca"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "react-pf-ui"
+        ],
+        "onmainpage": true,
+        "date": "2023",
+        "data": "./img/react-portfolio-ui/portfolio-ui-v11.png",
+        "alt": "Three screens of UI mockups for this porfolio website",
+        "caption": "First page of UI Initial Mockups. "
+      },
+      {
+        "id": "2",
+        "title": "UI Userflow 1",
+        "type": "individual",
+        "medium": [
+          "digital",
+          "firealpaca"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "react-pf-ui"
+        ],
+        "onmainpage": true,
+        "date": "2023",
+        "data": "./img/react-portfolio-ui/portfolio-ui-v13.png",
+        "alt": "Rough sketch of a userflow design of this portfolio website.",
+        "caption": "Initial design of UI userflow. I wanted to keep the UX as streamlined and cohesive as possible."
+      },
+
+      {
+        "id": "3",
+        "title": "2D Studio #4",
+        "type": "individual",
+        "medium": [
+          "traditional",
+          "2d"
+        ],
+        "industry": [
+          "illustration"
+        ],
+        "insubpage": [
+          "2d-studio"
+        ],
+        "onmainpage": true,
+        "date": "2017",
+        "data": "./img/2d-studio/2d4.png",
+        "alt": "A set of 6 black and white compositions, all using typography of the letters D and M.",
+        "caption": "An exploration into typography and compositions using my own initials."
+      },
+      {
+        "id": "4",
+        "title": "2D Studio #5",
+        "type": "individual",
+        "medium": [
+          "traditional",
+          "2d"
+        ],
+        "industry": [
+          "illustration"
+        ],
+        "insubpage": [
+          "2d-studio"
+        ],
+        "onmainpage": true,
+        "date": "2017",
+        "data": "./img/2d-studio/2d5.png",
+        "alt": "Two identical papercraft compositions made with different colors and flipped.",
+        "caption": "An exploration into the effects of color and direction."
+      },
+      {
+        "id": "5",
+        "title": "2D Studio",
+        "type": "sub-page-c",
+        "medium": [
+          "traditional",
+          "2d"
+        ],
+        "industry": [
+          "illustration"
+        ],
+        "insubpage": [],
+        "onmainpage": true,
+        "date": "2017",
+        "data": "./img/2d-studio/2d1.jpg",
+        "alt": "Two lino prints of a skull and feather, printed on white and golden paper.",
+        "caption": "2D Studio!!!"
+      }
+    ]
+  }
