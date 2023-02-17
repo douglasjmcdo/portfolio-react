@@ -1,20 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './css/index.css';
 import Board from './board.js';
-  
-  class App extends React.Component {
+import Header from './header.js';
+import entries from './data.json';
+import Layout from './templates/layout.js';
+import MainPage from './templates/home.js';
+import Collection from './templates/collection.js';
 
-    render() {
-      return (
-        <div className="app">
-          <div className="headerbar">
-            header here
-          </div>
-            <Board />
-        </div>
-      );
-    }
+  
+  const App=()=> {
+
+    return (
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path="/collection/*" element={<Collection />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+    
   }
   
   // ========================================

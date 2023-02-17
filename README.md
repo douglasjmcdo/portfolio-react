@@ -5,3 +5,8 @@ I retain copyright for all art and code.
 ## Functionality:
 Displays art projects (both individual images and links to sub-pages) in a responsive grid
 Sort or filter by title, date, medium, or industry.
+
+##Installed Packages:
+node.js
+react
+react-router-dom

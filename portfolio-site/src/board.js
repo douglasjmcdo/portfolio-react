@@ -1,10 +1,8 @@
 import React, {useState, useEffect } from 'react';
-import './index.css';
-import entries from './data.json';
+import './css/board.css';
 import Entry from './entry.js';
 
-const Board=()=>{
-    const [data, setData] = useState(null);
+const Board=({data})=>{
     const [filters, setFilters] = useState([null]);
     const [sorts, setSorts] = useState("date");
     const [needSort, setNeedSort] = useState(false);
@@ -12,30 +10,10 @@ const Board=()=>{
     const [entryArray, setEntryArray] = useState([]);
 
 
-    //"constructor": initializes data
-    useEffect(() => {
-        console.log("INITIAL RUN");
-        setData(importJson(entries));
-    }, []);
-
     //on data load, populate entry array. currently defaults to 'main'.
     useEffect(() => {
         populateEntryArray("main");
     }, [data]);
-
-    // This function takes a json of entries and returns an array of entries 
-    function importJson(dataIs) {
-        var dataimport = [];
-        try {
-            for (let x in dataIs["entries"]) {
-                dataimport[x] = dataIs["entries"][x];
-            }
-        }catch (error) {
-            console.error(error);
-          }
-        console.log("data import", dataimport);
-        return dataimport;
-    }
 
     function renderEntry(i) {
         return <Entry value={i} />;
@@ -57,7 +35,7 @@ const Board=()=>{
 
     function populateEntryArray(boardname) {
         //reset entry array before repopulating
-        console.log("POPULATE");
+        console.log("POPULATE ENTRIES");
         setEntryArray([]);
         for (let x in data) {
             //console.log(data[x]);

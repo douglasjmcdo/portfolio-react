@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './index.css';
+import './css/entry.css';
 
 const Entry=(data)=>{
     const [econtent, setEcontent] = useState(<div></div>);
@@ -40,7 +40,7 @@ const Entry=(data)=>{
 
         //todo: show title  over top left of content on hover
     return (
-      <div className="entry" onClick={openEntry} id={ data.value["id"] }>
+      <div className="entry" onClick={openEntry} key={ data.value["id"] }>
       <div className="eTitle">
         {data.value["title"]}
       </div>
