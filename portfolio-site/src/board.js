@@ -6,11 +6,13 @@ import Entry from './entry.js';
 
 
 const Board=({data, boardname})=>{
-    const [filters, setFilters] = useState([null]);
+    const [filters, setFilters] = useState({});
     const [sorts, setSorts] = useState("date");
     const [needSort, setNeedSort] = useState(false);
+    const [needFilter, setNeedFilter] = useState(false);
     const [status, setStatus] = useState("null");
-    const [entryArray, setEntryArray] = useState([]);
+    const [entryArray, setEntryArray] = useState([]); //BASE DATA
+    const [filteredArray, setFilteredArray] = useState([]); //ENTRY ARRAY, FILTERED + SORTED
 
 
     //on data load or url change, populate entry array. 
@@ -41,6 +43,11 @@ const Board=({data, boardname})=>{
         populateEntryArray(boardname);
     }, [data, boardname]);
 
+    //if entryArray changes, update filteredarray!
+    useEffect(() => {
+        setNeedFilter(true);        
+    }, [entryArray]);
+
     // function renderEntry(i) {
     //     return <Entry value={i} />;
     // };
@@ -65,31 +72,126 @@ const Board=({data, boardname})=>{
         // console.log("filters useeffect");
         setStatus(infoStatus(filters, sorts));
         if (needSort === false && entryArray.length > 0 ) { setNeedSort(true); }
-        // why does sNS(true) prevent entryArray from populating when entryArray == 0?? I guess it overwrites the data load?
-    }, [filters, sorts]);
+        // why does sNS(true) prevent entryArray from populating when entryArray == 0? I guess it overwrites the data load?
+    }, [sorts]);
 
-    
+    useEffect(() => {
+        setStatus(infoStatus(filters, sorts));
+        if (needFilter === false && entryArray.length > 0 ) { setNeedFilter(true); }
+    }, [filters]);
+
+    //
+    //FILTERING THE ENTRYARRAY:
+    //THE ENTRYARRAY WILL BE FILTERED AND ASSIGNED TO FILTEREDARRAY WHENEVER 'needFilter' IS TRUE
+    //THIS SHOULD HAPPEN EITHER:
+    // 1) WHEN ENTRYARRAY CHANGES
+    // 2) WHEN THE FILTER PARAMETER CHANGES
+    //
+
+    useEffect(() => {
+
+        function containsFilter(a, filterkey, filtervalue) {
+            //console.log("CONTAINSFILTER", a["title"], filterkey, filtervalue, typeof(a[filterkey]));
+            if (typeof(a[filterkey]) === "object") {
+                for (let i in a[filterkey]) {
+                    if (a[filterkey][i] === filtervalue) {
+                        //console.log("MATCH!", a["title"], " is ", filtervalue);
+                        return true;
+                    }
+                }
+                return false;
+
+            } else {
+                return (a[filterkey] === filtervalue);
+            }
+        }
+
+        function filterArray(arrayToFilter, filtermethods) {
+            const freshfilter = Object.entries(filtermethods);
+            if (arrayToFilter === undefined || arrayToFilter?.length === 0) {
+                return [];
+            } else if (freshfilter === undefined || freshfilter?.length === 0) {
+                console.log("no filters to apply.");
+                return arrayToFilter;
+            }
+
+            var filteredArray = arrayToFilter;
+
+            freshfilter.forEach(([key, value]) => {
+                filteredArray = filteredArray.filter((a) => containsFilter(a, key, value));
+            });
+
+            return filteredArray;
+        };
+
+        if (needFilter) {
+            console.log("FILTER RUN");
+            setFilteredArray(filterArray(entryArray, filters));
+            setNeedFilter(false);
+        }
+    }, [needFilter]);
+
+    function testFilter() {
+        var newfilter = filters;
+        if (Object.entries(filters).length === 1) {
+            newfilter = {};
+        }
+        else if (Object.entries(filters).length > 1){
+            newfilter = {medium: "2d" };
+        } else {
+            newfilter = {medium: "digital", title: "UI Userflow 1"};
+        }
+        console.log("NEW FILTER", newfilter, Object.entries(newfilter).length);
+        setFilters(newfilter);
+    }
 
 
     //
-    // SORTING THE ENTRYARRAY:
-    // THE ARRAY WILL SORT ONCE WHENEVER 'needSort' IS SET TO TRUE.
-    //THE ARRAY SHOULD BE SORTED EITHER:
+    // SORTING THE FILTEREDARRAY:
+    // THE ARRAY WILL SORT ONCE WHENEVER 'needSort' IS TRUE.
+    //THE ARRAY IS SORTED EITHER:
     //1) WHEN THE ARRAY CHANGES
     //2) WHEN THE SORT PARAMETER CHANGES
     //
 
-    //if entryArray has changed in length and is not empty, sort it again
+    //if filteredArray has changed in length and is not empty, sort it again
     useEffect(() => {
-        console.log("ENTRYARRAY LENGTH CHECK", entryArray.length);
-        if (entryArray.length !== 0) {
+        console.log("FILTEREDARRAY LENGTH CHECK", filteredArray.length);
+        if (filteredArray.length !== 0) {
             setNeedSort(true);
         }
-    }, [entryArray.length]);
+    }, [filteredArray.length]);
 
     //if "needsort" is true, sort the array and reset needsort
     useEffect(() => {
-        function sortEntryArray(arrayToSort, sortmethod) {
+        function stringifyObj(objin) {
+            if (typeof(objin) === "object") {
+                return JSON.stringify(objin);
+            }
+            else {
+                return objin;
+            }
+
+        }
+        function tiebreakerSort(a, b, sortmethod) {
+            console.log(a[sortmethod], b[sortmethod]);
+            let av = stringifyObj(a[sortmethod]);
+            let bv = stringifyObj(b[sortmethod]);
+            
+            if (av === bv) {
+                console.log("sort methods are tied: sort by date, then by title");
+                if (a["date"] == b["date"]) {
+                    return a["title"] > b["title"];
+
+                } else {
+                    return a["date"] < b["date"];
+                }
+            }
+            return av > bv;
+        }
+
+
+        function sortArray(arrayToSort, sortmethod) {
             if (arrayToSort === undefined || arrayToSort?.length === 0) {
                 return [];
             }
@@ -99,34 +201,45 @@ const Board=({data, boardname})=>{
             }
 
             //sort the contents of the array by sortmethod.  //this isn't reliably sorting by title. why?
-            const sortedArray = [...arrayToSort].sort((a,b) => a[sortmethod] - b[sortmethod]);
+            var sortedArray = arrayToSort;
+            var methodtype = typeof(arrayToSort[0][sortmethod]);
+            //date should be reverse-chronological
+            if (sortmethod === "date") {
+                sortedArray = [...arrayToSort].sort((a,b) => a[sortmethod] < b[sortmethod]);
+            }
+            else {
+                sortedArray = [...arrayToSort].sort((a,b) => tiebreakerSort(a, b, sortmethod));
+            } 
+            //else {
+            //     console.log("array time");
+            //     sortedArray = [...arrayToSort].sort((a,b) => a[sortmethod][0] > b[sortmethod][0]);;
+            // } this is never triggering?
+
+            //want a reverse sort? use this
+            if (false) {
+                sortedArray.reverse();
+            }
+            if (sortedArray.length === 3) {
+                console.log(sortedArray, sortmethod);
+            }
     
             return sortedArray;
         }
 
         if (needSort) {
             console.log("SORT RUN")
-            setEntryArray(sortEntryArray(entryArray, sorts));
+            setFilteredArray(sortArray(filteredArray, sorts));
             setNeedSort(false);
         }
     }, [needSort]);
 
-    
-
-    // //toggle sort between date and title.
-    // function testSort() {
-    //     console.log('testsort');
-        
-    //     const newEntry = entryArray[3];
-    //     setEntryArray(entryArray => [...entryArray, newEntry]);
-
-
-    // }
 
     function testSort2() {
         var newsort = sorts;
         if (sorts === "date") {
-            newsort = "id";
+            newsort = "medium";
+        } else if (sorts === "medium") {
+            newsort = "title";
         }
          else {
             newsort = "date";
@@ -141,9 +254,10 @@ const Board=({data, boardname})=>{
           <div className="status">{status}</div>
           {/* <button onClick={testSort}>add + sort</button> */}
           <button onClick={testSort2}>switch sort</button>
+          <button onClick={testFilter}>switch filter</button>
           <div className="board-row">
 
-            { entryArray.map(x => (
+            { filteredArray.map(x => (
                 <Entry value={x} key={x["title"]}/>
             )) }
           </div>

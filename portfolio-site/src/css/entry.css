@@ -25,6 +25,10 @@
     transition: opacity .2s ease-out 20ms;
 }
 
-.entryimg {
+.eContent {
     max-height: 240px;
+}
+
+.entryimg {
+    max-height: inherit;
 }

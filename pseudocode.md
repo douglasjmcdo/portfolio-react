@@ -1,7 +1,11 @@
 ## BOARD
 The BOARD contains ENTRIES.
 The BOARD has clickable industry filters along the top of the app, as well as an openable sort/filter menu.
-ENTRIES on the board can be filtered or sorted by DATE, TITLE, MEDIUM (type of art), or INDUSTRY (for professional portfolios).
+
+  ### SORTING
+  ENTRIES on the board can be filtered or sorted by DATE, TITLE, MEDIUM (type of art), or INDUSTRY (for professional portfolios). If sorting by MEDIUM or INDUSTRY, entries will be sorted based on the FIRST ONE LISTED in their array of mediums or industries.
+  
+
 
 ### OBJECT: BOARD
   sort: "medium" / "date" / none
@@ -22,13 +26,15 @@ ENTRIES can be INDIVIDUAL or SUB-PAGES. ENTRIES are displayed on the default BOA
      Upon returning from any SUB-PAGE to the MAIN PAGE, all previously active filters and/or sorts should persist!
 
 ### OBJECT: ENTRY
-  id: 2d-studio
-  title: "Print #4"
+  id: 12
+  title: "UniqueTitle" 
+  url: "not required for individuals"
   type: individual / sub-page-d / sub-page-c
   medium: [ digital / traditional, water color / 3d ]
   industry: [ ui / front-end / illustration, comics ]
   in-sub-page: [ 2d-studio, observational / null ]
   on-main-page: true
-  date: 01 Jan 2017
+  date: 2017
   data: blank.jpeg / subpage.html
+  alt: "alt text"
   caption: ""
