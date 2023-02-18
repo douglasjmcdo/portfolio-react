@@ -5,7 +5,7 @@ const MainPage = () => {
  const data = useOutletContext();
  return( 
  <div id="mainpage">
-    <Board data={data} />
+    <Board data={data} boardname="main" />
     <div>MAIN PAGE!</div>
  </div>
  )

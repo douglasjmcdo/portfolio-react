@@ -46,7 +46,7 @@ const Header=({industries})=>{
 
 const FilterButton=({value}, {index})=>{
     return (
-        <li className="filterbutton" key={index}><Link to="/collection/aaa">{ value } </Link></li>
+        <li className="filterbutton" key={index}><Link to="/collection/2d-studio">{ value } </Link></li>
     );
 }
 
