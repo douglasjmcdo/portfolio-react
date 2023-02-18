@@ -16,7 +16,7 @@ const Collection = () => {
 
  function getThisCollectionInfo(all) {
     for (let x in all) {
-        if (all[x].type === "sub-page-c" && all[x]?.url == location) {
+        if (all[x].type === "sub-page-c" && all[x]?.url === location) {
             return all[x];
         }
     }

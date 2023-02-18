@@ -22,30 +22,30 @@ const Entry=(data)=>{
 
     //initialize econtent
     useEffect(() => {
+      function determineContent(source) {
+        if (type === "individual") {
+          setEcontent(<img className="entryimg" src={source.value["data"]} alt={source.value["alt"]}></img>);
+  //         setEwrapper(<div className="entry" onClick={openEntry} key={ source.value["id"] }>
+  //                       <FillEntry />
+  //                     </div>);
+        }
+        else if (type === "sub-page-c") {
+          //todo: implement!
+          setEcontent(<img className="entryimg" src={source.value["data"]} alt={source.value["alt"]}></img>)
+  //         var linkto = "/collection/" + source.value["url"];
+  //         setEwrapper(<Link to={linkto} key={ source.value["id"] }>
+  //                       <div className="entry"><FillEntry /></div>
+  //                     </Link>);
+        }
+        else {
+          //todo: implement!
+          setEcontent(<div>Sub Page: Documentation</div>)
+        }
+      }
+
       determineContent(data);
-    }, [data]);
+    }, [data, type]);
 
-
-    function determineContent(source) {
-      if (type === "individual") {
-        setEcontent(<img className="entryimg" src={source.value["data"]} alt={source.value["alt"]}></img>);
-//         setEwrapper(<div className="entry" onClick={openEntry} key={ source.value["id"] }>
-//                       <FillEntry />
-//                     </div>);
-      }
-      else if (type === "sub-page-c") {
-        //todo: implement!
-        setEcontent(<img className="entryimg" src={source.value["data"]} alt={source.value["alt"]}></img>)
-//         var linkto = "/collection/" + source.value["url"];
-//         setEwrapper(<Link to={linkto} key={ source.value["id"] }>
-//                       <div className="entry"><FillEntry /></div>
-//                     </Link>);
-      }
-      else {
-        //todo: implement!
-        setEcontent(<div>Sub Page: Documentation</div>)
-      }
-    }
  
     function openEntry() {
         if (type === "individual") {

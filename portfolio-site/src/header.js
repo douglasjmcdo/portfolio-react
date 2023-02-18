@@ -8,30 +8,31 @@ const Header=({industries})=>{
 
     //on industries load-in, populate filterArray
     useEffect(() => {
+        //
+        function populateFilterArray() {
+            console.log("POPULATE FILTERS");
+            setFilterArray([]);
+            for (let x in industries) {
+                //console.log(industries[x], x);
+                setFilterArray(filterArray => [...filterArray, renderFilterButton(industries[x], x) ]);
+            }
+        }
+
+        function renderFilterButton(v, i) {
+            return <FilterButton value={v} index={i} key={i} />;
+        }
+        
         populateFilterArray();
     }, [industries]);
 
-    //
-    function populateFilterArray() {
-        console.log("POPULATE FILTERS");
-        setFilterArray([]);
-        for (let x in industries) {
-            console.log(industries[x]);
-            setFilterArray(filterArray => [...filterArray, renderFilterButton(industries[x], x) ]);
-        }
-    }
+    
 
-    function renderFilterButton(v, i) {
-        console.log(v, typeof(v), i, typeof(i));
-        return <FilterButton value={v} index={i} />;
-    }
-
-    useEffect(() => {
-        console.log(filterArray);
-        for (let x in filterArray) {
-            console.log(filterArray[x]);
-        }
-    }, [filterArray.length]);
+    // useEffect(() => {
+    //     console.log(filterArray);
+    //     for (let x in filterArray) {
+    //         //console.log(filterArray[x]);
+    //     }
+    // }, [filterArray.length]);
 
     return (
         <div className="headerbar">
@@ -44,9 +45,9 @@ const Header=({industries})=>{
 
 }
 
-const FilterButton=({value}, {index})=>{
+const FilterButton=({value, index})=>{
     return (
-        <li className="filterbutton" key={index}><Link to="/collection/2d-studio">{ value } </Link></li>
+        <li key={ value } className="filterbutton"><Link to="/collection/2d-studio">{ value } </Link></li>
     );
 }
 
