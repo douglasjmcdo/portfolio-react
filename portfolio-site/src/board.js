@@ -3,17 +3,24 @@ import React, {useState, useEffect } from 'react';
 import './css/board.css';
 import Entry from './entry.js';
 import { useSearchParams } from 'react-router-dom';
+import {
+    useQueryParam,
+    StringParam,
+    ObjectParam,
+    withDefault
+  } from 'use-query-params';
 
 
 const Board=({data, boardname})=>{
-    const [filters, setFilters] = useState({});
-    const [sorts, setSorts] = useState("date");
+    
+    const [filters, setFilters] = useQueryParam('filter', ObjectParam);
+    //how to set default filter? when i try withDefault, it infinite loops on FILTER RUN
+    const [sorts, setSorts] = useQueryParam('sort', withDefault(StringParam, "medium"));
     const [needSort, setNeedSort] = useState(false);
     const [needFilter, setNeedFilter] = useState(false);
     const [status, setStatus] = useState("null");
     const [entryArray, setEntryArray] = useState([]); //BASE DATA
     const [filteredArray, setFilteredArray] = useState([]); //ENTRY ARRAY, FILTERED + SORTED
-
 
     //on data load or url change, populate entry array. 
     useEffect(() => {
@@ -59,7 +66,7 @@ const Board=({data, boardname})=>{
         let filterstring = "";
         let fullstring = "";
 
-        if (Object.entries(filters).length > 0) {
+        if (filters && Object.entries(filters).length > 0) {
             filterstring = "Filtered by: ";
             Object.entries(filters).forEach(([key, value]) => {
                 filterstring +="\"" + value + "\", ";
@@ -84,7 +91,6 @@ const Board=({data, boardname})=>{
 
     //if filters or sorts change, update infostatus
     useEffect(() => {
-        // console.log("filters useeffect");
         setStatus(infoStatus(filters, sorts));
         if (needSort === false && entryArray.length > 0 ) { setNeedSort(true); }
         // why does sNS(true) prevent entryArray from populating when entryArray == 0? I guess it overwrites the data load?
@@ -92,6 +98,7 @@ const Board=({data, boardname})=>{
 
     useEffect(() => {
         setStatus(infoStatus(filters, sorts));
+        console.log('filters is ', filters);
         if (needFilter === false && entryArray.length > 0 ) { setNeedFilter(true); }
     }, [filters]);
 
@@ -123,11 +130,16 @@ const Board=({data, boardname})=>{
         }
 
         function filterArray(arrayToFilter, filtermethods) {
+            if (!filtermethods) {
+                console.log("no filter method provided.", arrayToFilter, filtermethods);
+                return arrayToFilter;
+            }
+
             const freshfilter = Object.entries(filtermethods);
             if (arrayToFilter === undefined || arrayToFilter?.length === 0) {
                 return [];
             } else if (freshfilter === undefined || freshfilter?.length === 0) {
-                console.log("no filters to apply.");
+                console.log("no filters to apply. returning,",arrayToFilter);
                 return arrayToFilter;
             }
 
@@ -142,23 +154,28 @@ const Board=({data, boardname})=>{
 
         if (needFilter) {
             console.log("FILTER RUN");
-            setFilteredArray(filterArray(entryArray, filters));
             setNeedFilter(false);
+            setNeedSort(true);
+            let newArray = filterArray(entryArray, filters);
+            setFilteredArray(newArray);
+            console.log(newArray);
         }
     }, [needFilter]);
 
     function testFilter() {
-        var newfilter = filters;
-        if (Object.entries(filters).length === 1) {
-            newfilter = {};
+        if (!filters || Object.entries(filters).length === 1) {
+            //newfilter = {};
+            console.log(2);
+            setFilters({medium: "digital", title: "UI Userflow 1"});
         }
-        else if (Object.entries(filters).length > 1){
-            newfilter = {medium: "2d" };
+        else if (Object.entries(filters).length === 0){
+            //newfilter = {medium: "2d" };
+            setFilters({medium: "2d"});
         } else {
-            newfilter = {medium: "digital", title: "UI Userflow 1"};
+            console.log(3);
+            //newfilter = {medium: "digital", title: "UI Userflow 1"};
+            setFilters({});
         }
-        // console.log("NEW FILTER", newfilter, Object.entries(newfilter).length);
-        setFilters(newfilter);
     }
 
 
@@ -231,28 +248,29 @@ const Board=({data, boardname})=>{
                 sortedArray.reverse();
             }
     
+            console.log(sortedArray, "sorted");
             return sortedArray;
         }
 
         if (needSort) {
             console.log("SORT RUN")
-            setFilteredArray(sortArray(filteredArray, sorts));
+            let newArray = sortArray(filteredArray, sorts);
+            setFilteredArray(newArray);
             setNeedSort(false);
+            console.log(newArray);
         }
     }, [needSort]);
 
 
     function testSort2() {
-        var newsort = sorts;
         if (sorts === "date") {
-            newsort = "medium";
+            setSorts("medium");
         } else if (sorts === "medium") {
-            newsort = "title";
+            setSorts("title");
         }
          else {
-            newsort = "date";
+            setSorts("date");
         }
-        setSorts(newsort);
         
     }
 
