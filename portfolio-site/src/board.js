@@ -2,7 +2,7 @@ import { array } from 'prop-types';
 import React, {useState, useEffect } from 'react';
 import './css/board.css';
 import Entry from './entry.js';
-//import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 
 const Board=({data, boardname})=>{
@@ -55,16 +55,31 @@ const Board=({data, boardname})=>{
     //this function determines the info string for sorts and filters
     function infoStatus(filters, sorts) {
         // console.log("infostatus");
-        if (filters === undefined || sorts === undefined ) {
-            console.log(filters, sorts);
-            return "undefined";
+        let sortstring = "";
+        let filterstring = "";
+        let fullstring = "";
+
+        if (Object.entries(filters).length > 0) {
+            filterstring = "Filtered by: ";
+            Object.entries(filters).forEach(([key, value]) => {
+                filterstring +="\"" + value + "\", ";
+            });
+            filterstring = filterstring.substring(0, filterstring.length - 2);
         }
-        if (filters[0] == null) {
-            return "Sorted by: " + sorts;
+
+        if (sorts) {
+            sortstring = "Sorted by: " + sorts;
         }
-        else {
-            return "filters else";
+
+        if (filterstring.length > 5) {
+            fullstring = sortstring + " || " + filterstring;
+        } else {
+            fullstring = sortstring;
         }
+
+
+
+        return fullstring;
     }
 
     //if filters or sorts change, update infostatus
@@ -79,6 +94,7 @@ const Board=({data, boardname})=>{
         setStatus(infoStatus(filters, sorts));
         if (needFilter === false && entryArray.length > 0 ) { setNeedFilter(true); }
     }, [filters]);
+
 
     //
     //FILTERING THE ENTRYARRAY:
@@ -141,7 +157,7 @@ const Board=({data, boardname})=>{
         } else {
             newfilter = {medium: "digital", title: "UI Userflow 1"};
         }
-        console.log("NEW FILTER", newfilter, Object.entries(newfilter).length);
+        // console.log("NEW FILTER", newfilter, Object.entries(newfilter).length);
         setFilters(newfilter);
     }
 
@@ -174,12 +190,17 @@ const Board=({data, boardname})=>{
 
         }
         function tiebreakerSort(a, b, sortmethod) {
-            console.log(a[sortmethod], b[sortmethod]);
+            //stringify so that arrays compare properly
             let av = stringifyObj(a[sortmethod]);
             let bv = stringifyObj(b[sortmethod]);
+
+            //date defaults to REVERSE chronological
+            if (sortmethod === "date") {
+                return av < bv;
+            }
             
             if (av === bv) {
-                console.log("sort methods are tied: sort by date, then by title");
+                // console.log("sort methods are tied: sort by date, then by title");
                 if (a["date"] == b["date"]) {
                     return a["title"] > b["title"];
 
@@ -203,24 +224,11 @@ const Board=({data, boardname})=>{
             //sort the contents of the array by sortmethod.  //this isn't reliably sorting by title. why?
             var sortedArray = arrayToSort;
             var methodtype = typeof(arrayToSort[0][sortmethod]);
-            //date should be reverse-chronological
-            if (sortmethod === "date") {
-                sortedArray = [...arrayToSort].sort((a,b) => a[sortmethod] < b[sortmethod]);
-            }
-            else {
-                sortedArray = [...arrayToSort].sort((a,b) => tiebreakerSort(a, b, sortmethod));
-            } 
-            //else {
-            //     console.log("array time");
-            //     sortedArray = [...arrayToSort].sort((a,b) => a[sortmethod][0] > b[sortmethod][0]);;
-            // } this is never triggering?
-
+            sortedArray = [...arrayToSort].sort((a,b) => tiebreakerSort(a, b, sortmethod));
+            
             //want a reverse sort? use this
             if (false) {
                 sortedArray.reverse();
-            }
-            if (sortedArray.length === 3) {
-                console.log(sortedArray, sortmethod);
             }
     
             return sortedArray;
