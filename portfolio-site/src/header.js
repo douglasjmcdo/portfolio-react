@@ -21,7 +21,7 @@ const Header=({industries})=>{
         function renderFilterButton(v, i) {
             return <FilterButton value={v} index={i} key={i} />;
         }
-        
+
         populateFilterArray();
     }, [industries]);
 
@@ -46,8 +46,9 @@ const Header=({industries})=>{
 }
 
 const FilterButton=({value, index})=>{
+    let linkto = "/?filter=industry-" + value;
     return (
-        <li key={ value } className="filterbutton"><Link to="/collection/2d-studio">{ value } </Link></li>
+        <li key={ value } className="filterbutton"><Link to={ linkto }>{ value } </Link></li>
     );
 }
 
