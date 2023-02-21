@@ -10,7 +10,7 @@ const Collection = () => {
  const prevpage = useNavigate();
 
  function getCollectionName(path) {
-    console.log(path);
+    //console.log(path);
     return path.split('/').pop();
  }
 

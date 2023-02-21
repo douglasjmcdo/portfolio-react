@@ -1,8 +1,6 @@
-import { array } from 'prop-types';
 import React, {useState, useEffect } from 'react';
 import './css/board.css';
 import Entry from './entry.js';
-import { useSearchParams } from 'react-router-dom';
 import {
     useQueryParam,
     StringParam,
@@ -98,7 +96,7 @@ const Board=({data, boardname})=>{
 
     useEffect(() => {
         setStatus(infoStatus(filters, sorts));
-        console.log('filters is ', filters);
+        //console.log('filters is ', filters);
         if (needFilter === false && entryArray.length > 0 ) { setNeedFilter(true); }
     }, [filters]);
 
@@ -158,7 +156,7 @@ const Board=({data, boardname})=>{
             setNeedSort(true);
             let newArray = filterArray(entryArray, filters);
             setFilteredArray(newArray);
-            console.log(newArray);
+            //console.log(newArray);
         }
     }, [needFilter]);
 
@@ -248,7 +246,7 @@ const Board=({data, boardname})=>{
                 sortedArray.reverse();
             }
     
-            console.log(sortedArray, "sorted");
+            // console.log(sortedArray, "sorted");
             return sortedArray;
         }
 
@@ -257,7 +255,7 @@ const Board=({data, boardname})=>{
             let newArray = sortArray(filteredArray, sorts);
             setFilteredArray(newArray);
             setNeedSort(false);
-            console.log(newArray);
+            //console.log(newArray);
         }
     }, [needSort]);
 

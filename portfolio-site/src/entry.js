@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './css/entry.css';
 import { Link } from 'react-router-dom';
+import BigImage from './bigimage.js';
 
 const Entry=(data)=>{
     const [econtent, setEcontent] = useState(<div></div>);
     const type = data.value["type"];
+    const [openBig, setOpenBig] = useState(false);
     
     //todo: entry div: on-click, open the ImageMode component
 
@@ -52,7 +54,7 @@ const Entry=(data)=>{
  
     function openEntry() {
         if (type === "individual") {
-            alert("this is an individual entry! open up big display");
+            setOpenBig(true);
         }
         else {
             alert("this is a documentation subpage! open that page!");
@@ -60,7 +62,10 @@ const Entry=(data)=>{
     }
 
     return (
-      <div>{econtent}</div>
+      <div>{econtent}
+      <div hidden={!openBig}><BigImage data={data} setBig={setOpenBig}/></div>
+      </div>
+
     );
 
 }
