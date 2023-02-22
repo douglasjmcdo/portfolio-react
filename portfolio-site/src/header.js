@@ -25,15 +25,6 @@ const Header=({industries})=>{
         populateFilterArray();
     }, [industries]);
 
-    
-
-    // useEffect(() => {
-    //     console.log(filterArray);
-    //     for (let x in filterArray) {
-    //         //console.log(filterArray[x]);
-    //     }
-    // }, [filterArray.length]);
-
     return (
         <div className="headerbar">
             <Link to="/" className="headertext"><div>DOUGLAS MCDONALD</div></Link>

@@ -16,6 +16,8 @@
     justify-content: center;
     display: flex;
     padding: 0px;
+    margin-top: 8px;
+    margin-bottom: 0px;
 }
 
 .filterbutton {

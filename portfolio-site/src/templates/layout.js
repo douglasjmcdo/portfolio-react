@@ -3,10 +3,22 @@ import React, {useState, useEffect } from 'react';
 
 import entries from '../data.json';
 import Header from '../header.js';
+import {
+  useQueryParam,
+  StringParam,
+  ObjectParam,
+  withDefault
+} from 'use-query-params';
+
 
 const Layout = () => {
   const [data, setData] = useState(null);
   const [industries, setIndustries] = useState(["front-end", "illustration"]);
+  const [filters, setFilters] = useQueryParam('filter', ObjectParam);
+  //how to set default filter? when i try withDefault, it infinite loops on FILTER RUN
+  const [sorts, setSorts] = useQueryParam('sort', withDefault(StringParam, "medium"));
+  const [needSort, setNeedSort] = useState(false);
+  const [needFilter, setNeedFilter] = useState(false);  
 
   //"constructor": initializes data
   useEffect(() => {
@@ -43,6 +55,22 @@ const Layout = () => {
     setData(importJson(entries));
   }, []);
 
+ //TODO: move search toggling here
+  function testFilter() {
+    if (!filters || Object.entries(filters).length === 1) {
+        //newfilter = {};
+        console.log(2);
+        setFilters({medium: "digital", title: "UI Userflow 1"});
+    }
+    else if (Object.entries(filters).length === 0){
+        //newfilter = {medium: "2d" };
+        setFilters({medium: "2d"});
+    } else {
+        console.log(3);
+        //newfilter = {medium: "digital", title: "UI Userflow 1"};
+        setFilters({});
+    }
+  }
  
 
     return (
