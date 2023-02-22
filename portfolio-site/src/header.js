@@ -1,11 +1,13 @@
 import React, {useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './css/header.css';
+import Sidebar from './sidebar';
 
 //todo: import filterbar options from data.json?
-const Header=({industries, setFilters, filters, sorts, setSorts})=>{
+const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
     const [industryArray, setIndustryArray] = useState(["front-end", "illustration"]);
     const [status, setStatus] = useState("null");
+    const [showSidebar, setShowSidebar] = useState(false);
 
     //on industries load-in, populate industryArray
     useEffect(() => {
@@ -76,7 +78,7 @@ const Header=({industries, setFilters, filters, sorts, setSorts})=>{
         }
         else if (Object.entries(filters).length === 0){
             //newfilter = {medium: "2d" };
-            setFilters({medium: "2d"});
+            setFilters({medium: "2d, traditional"});
         } else {
             console.log(3);
             //newfilter = {medium: "digital", title: "UI Userflow 1"};
@@ -95,6 +97,11 @@ const Header=({industries, setFilters, filters, sorts, setSorts})=>{
         }
     }
 
+    function openSidebar() {
+        console.log(showSidebar);
+        setShowSidebar(true);
+    }
+
 
     return (
         <div className="headerbar">
@@ -107,6 +114,9 @@ const Header=({industries, setFilters, filters, sorts, setSorts})=>{
                 <div className="searchSettings">
                     <button onClick={testFilter}>switch filter</button>
                     <button onClick={testSort2}>switch sort</button>
+                    <button onClick={openSidebar}>show sidebar</button>
+                    <Sidebar filters={filters} setFilters={setFilters} sorts={sorts} setSorts={setSorts} industries={industries} mediums={mediums}
+                             showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
                 </div>
             </div>
 

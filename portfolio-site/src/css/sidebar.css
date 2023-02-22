@@ -1,0 +1,37 @@
+.sidebar {
+    position: absolute;
+    height: 100%; 
+    width: 300px;
+    top: 0;
+    right: -300px;
+    background-color: orange;
+    transition: right .3s ease-in-out;
+    z-index: 5;
+}
+
+.sidebar.open {
+    right: 0;
+    transition: right .3s ease-in-out;
+}
+
+.sidebar-contents {
+    margin: 15px;
+}
+
+.sortselect {
+    padding: 5px;
+    margin: 5px;
+    background-color: orangered;
+}
+
+.filterselect {
+    padding: 5px;
+    margin: 5px;
+    background-color: red;
+
+}
+
+.checkmarkheader {
+    margin-top: 8px;
+    margin-bottom: 3px;
+}

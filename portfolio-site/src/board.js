@@ -58,7 +58,7 @@ const Board=({data, filters, sorts, boardname})=>{
     //if "needfilter" is true, filter the array and reset needfilter
     useEffect(() => {
         function containsFilter(a, filterkey, filtervalue) {
-            //console.log("CONTAINSFILTER", a["title"], filterkey, filtervalue, typeof(a[filterkey]));
+            console.log(filtervalue)
             if (typeof(a[filterkey]) === "object") {
                 for (let i in a[filterkey]) {
                     if (a[filterkey][i] === filtervalue) {
@@ -90,7 +90,16 @@ const Board=({data, filters, sorts, boardname})=>{
             var filteredArray = arrayToFilter;
 
             freshfilter.forEach(([key, value]) => {
-                filteredArray = filteredArray.filter((a) => containsFilter(a, key, value));
+                //filtering by multiple mediums or industries: delineate with commas
+                if (value.indexOf(", ") !== -1) {
+                    var allvalues = value.split(", ");
+                    for (let v in allvalues) {
+                        filteredArray = filteredArray.filter((a) => containsFilter(a, key, allvalues[v]));
+                    }
+                } else {
+                    //filtering by a single medium or industry
+                    filteredArray = filteredArray.filter((a) => containsFilter(a, key, value));
+                }
             });
 
             return filteredArray;
