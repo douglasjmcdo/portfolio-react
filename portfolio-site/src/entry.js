@@ -48,18 +48,17 @@ const Entry=(data)=>{
         }
       }
 
-      determineContent(data);
-    }, [data, type]);
-
- 
-    function openEntry() {
+      function openEntry() {
         if (type === "individual") {
             setOpenBig(true);
         }
         else {
             alert("this is a documentation subpage! open that page!");
         }
-    }
+      }
+
+      determineContent(data);
+    }, [data, type]);
 
     return (
       <div>{econtent}

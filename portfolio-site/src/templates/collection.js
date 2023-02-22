@@ -26,7 +26,7 @@ const Collection = () => {
    }
 
    setSubpageinfo(getThisCollectionInfo(data["data"]));
- }, [data]);
+ }, [data, location]);
 
 
  return( 

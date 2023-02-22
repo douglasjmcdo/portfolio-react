@@ -1,13 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import './css/board.css';
 import Entry from './entry.js';
-import {
-    useQueryParam,
-    StringParam,
-    ObjectParam,
-    withDefault
-  } from 'use-query-params';
-
 
 const Board=({data, filters, sorts, boardname})=>{
     const [needSort, setNeedSort] = useState(false);
@@ -22,7 +15,6 @@ const Board=({data, filters, sorts, boardname})=>{
             console.log("POPULATE ENTRIES");
             setEntryArray([]);
             for (let x in data) {
-    
                 //main board: check if exists on main page!
                 if (boardname === "main" && data[x].onmainpage === true) {
                     setEntryArray(entryArray => [...entryArray, data[x] ]);
@@ -60,11 +52,11 @@ const Board=({data, filters, sorts, boardname})=>{
     //2. if the filter parameters change, update filteredarray!
     useEffect(() => {
         if (needFilter === false && entryArray.length > 0 ) { setNeedFilter(true); }
+        // eslint-disable-next-line
     }, [filters]);
 
     //if "needfilter" is true, filter the array and reset needfilter
     useEffect(() => {
-
         function containsFilter(a, filterkey, filtervalue) {
             //console.log("CONTAINSFILTER", a["title"], filterkey, filtervalue, typeof(a[filterkey]));
             if (typeof(a[filterkey]) === "object") {
@@ -102,7 +94,7 @@ const Board=({data, filters, sorts, boardname})=>{
             });
 
             return filteredArray;
-        };
+        }
 
         if (needFilter) {
             console.log("FILTER RUN");
@@ -111,9 +103,9 @@ const Board=({data, filters, sorts, boardname})=>{
             let newArray = filterArray(entryArray, filters);
             setFilteredArray(newArray);
         }
+        // eslint-disable-next-line
     }, [needFilter]);
 
-    
 
     //
     // SORTING THE FILTEREDARRAY:
@@ -137,9 +129,8 @@ const Board=({data, filters, sorts, boardname})=>{
     useEffect(() => {
         if (needSort === false && entryArray.length > 0 ) { setNeedSort(true); }
         // why does sNS(true) prevent entryArray from populating when entryArray == 0? I guess it overwrites the data load?
+        // eslint-disable-next-line
     }, [sorts]);
-
-
 
     //if "needsort" is true, sort the array and reset needsort
     useEffect(() => {
@@ -152,6 +143,7 @@ const Board=({data, filters, sorts, boardname})=>{
             }
 
         }
+
         function tiebreakerSort(a, b, sortmethod) {
             //stringify so that arrays compare properly
             let av = stringifyObj(a[sortmethod]);
@@ -164,7 +156,7 @@ const Board=({data, filters, sorts, boardname})=>{
             
             if (av === bv) {
                 // console.log("sort methods are tied: sort by date, then by title");
-                if (a["date"] == b["date"]) {
+                if (a["date"] === b["date"]) {
                     return a["title"] > b["title"];
 
                 } else {
@@ -173,7 +165,6 @@ const Board=({data, filters, sorts, boardname})=>{
             }
             return av > bv;
         }
-
 
         function sortArray(arrayToSort, sortmethod) {
             if (arrayToSort === undefined || arrayToSort?.length === 0) {
@@ -186,15 +177,12 @@ const Board=({data, filters, sorts, boardname})=>{
 
             //sort the contents of the array by sortmethod.  //this isn't reliably sorting by title. why?
             var sortedArray = arrayToSort;
-            var methodtype = typeof(arrayToSort[0][sortmethod]);
             sortedArray = [...arrayToSort].sort((a,b) => tiebreakerSort(a, b, sortmethod));
             
             //want a reverse sort? use this
             if (false) {
                 sortedArray.reverse();
             }
-    
-            // console.log(sortedArray, "sorted");
             return sortedArray;
         }
 
@@ -203,8 +191,8 @@ const Board=({data, filters, sorts, boardname})=>{
             let newArray = sortArray(filteredArray, sorts);
             setFilteredArray(newArray);
             setNeedSort(false);
-            //console.log(newArray);
         }
+        // eslint-disable-next-line
     }, [needSort]);
 
     return (

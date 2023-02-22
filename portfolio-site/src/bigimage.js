@@ -29,9 +29,7 @@ const BigImage=({data, setBig})=>{
         }
     
         tagsCalculator();
-        //console.log("initialized bigimage: ", data.value["title"]);
-
-    }, []);
+    }, [data]);
 
     
     return (
