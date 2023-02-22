@@ -1,12 +1,12 @@
 import { useOutletContext } from "react-router-dom";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Board from '../board.js';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 const Collection = () => {
  const data = useOutletContext();
  const location = getCollectionName(useLocation().pathname);
- let subpageinfo = "";
+ const [subpageinfo, setSubpageinfo] = useState("");
  console.log(location);
  const prevpage = useNavigate();
 
@@ -25,7 +25,7 @@ const Collection = () => {
       }
    }
 
-   getThisCollectionInfo(data["data"]);
+   setSubpageinfo(getThisCollectionInfo(data["data"]));
  }, [data]);
 
 
