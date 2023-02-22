@@ -3,12 +3,18 @@ import { useOutletContext } from "react-router-dom";
 
 const MainPage = () => {
  const data = useOutletContext();
- const usedata = data[0];
- const filters = data[1];
- //console.log(data?, usedata, filters);
+ var usedata = "";
+ var filters = "";
+ var sorts = "";
+ 
+ if (data) {
+   usedata = data["data"];
+   filters = data["filters"];
+   sorts = data["sorts"];
+ }
  return( 
  <div id="mainpage">
-    <Board data={data} boardname="main" />
+    <Board data={usedata} filters={filters} sorts={sorts} boardname="main" />
     <div>MAIN PAGE!</div>
  </div>
  )

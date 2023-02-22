@@ -3,18 +3,19 @@ import { Link } from 'react-router-dom';
 import './css/header.css';
 
 //todo: import filterbar options from data.json?
-const Header=({industries})=>{
-    const [filterArray, setFilterArray] = useState(["front-end", "illustration"]);
+const Header=({industries, setFilters, filters, sorts, setSorts})=>{
+    const [industryArray, setIndustryArray] = useState(["front-end", "illustration"]);
+    const [status, setStatus] = useState("null");
 
-    //on industries load-in, populate filterArray
+    //on industries load-in, populate industryArray
     useEffect(() => {
         //
-        function populateFilterArray() {
+        function populateIndustryArray() {
             console.log("POPULATE FILTERS");
-            setFilterArray([]);
+            setIndustryArray([]);
             for (let x in industries) {
                 //console.log(industries[x], x);
-                setFilterArray(filterArray => [...filterArray, renderFilterButton(industries[x], x) ]);
+                setIndustryArray(industryArray => [...industryArray, renderFilterButton(industries[x], x) ]);
             }
         }
 
@@ -22,15 +23,93 @@ const Header=({industries})=>{
             return <FilterButton value={v} index={i} key={i} />;
         }
 
-        populateFilterArray();
+        populateIndustryArray();
     }, [industries]);
+
+
+    //
+    //SORTING AND FILTERING:
+    //
+
+     //this function determines the info string for sorts and filters
+     function infoStatus(filtering, sorting) {
+        // console.log("infostatus");
+        let sortstring = "";
+        let filterstring = "";
+        let fullstring = "";
+
+        if (filtering && Object.entries(filtering).length > 0) {
+            filterstring = "Filtered by: ";
+            Object.entries(filtering).forEach(([key, value]) => {
+                filterstring +="\"" + value + "\", ";
+            });
+            filterstring = filterstring.substring(0, filterstring.length - 2);
+        }
+
+        if (sorting) {
+            sortstring = "Sorted by: " + sorting;
+        }
+
+        if (filterstring.length > 5) {
+            fullstring = sortstring + " || " + filterstring;
+        } else {
+            fullstring = sortstring;
+        }
+
+
+
+        return fullstring;
+    }
+
+    //if filters or sorts change, update infostatus
+    useEffect(() => {
+        setStatus(infoStatus(filters, sorts));
+    }, [sorts, filters]);
+
+
+    //BUTTON TESTERS. REMOVE ONCE BUTTONS ARE NO LONGER NEEDED
+    function testFilter() {
+        if (!filters || Object.entries(filters).length === 1) {
+            //newfilter = {};
+            console.log(2);
+            setFilters({medium: "digital", title: "UI Userflow 1"});
+        }
+        else if (Object.entries(filters).length === 0){
+            //newfilter = {medium: "2d" };
+            setFilters({medium: "2d"});
+        } else {
+            console.log(3);
+            //newfilter = {medium: "digital", title: "UI Userflow 1"};
+            setFilters({});
+        }
+    }
+    
+    function testSort2() {
+        if (sorts === "date") {
+            setSorts("medium");
+        } else if (sorts === "medium") {
+            setSorts("title");
+        }
+         else {
+            setSorts("date");
+        }
+    }
+
 
     return (
         <div className="headerbar">
             <Link to="/" className="headertext"><div>DOUGLAS MCDONALD</div></Link>
             <ul className="filterbar">
-                { filterArray }
+                { industryArray }
             </ul>
+            <div className="status">
+                {status}
+                <div className="searchSettings">
+                    <button onClick={testFilter}>switch filter</button>
+                    <button onClick={testSort2}>switch sort</button>
+                </div>
+            </div>
+
         </div>
     )
 
