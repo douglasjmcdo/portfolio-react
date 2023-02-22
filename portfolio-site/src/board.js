@@ -9,14 +9,9 @@ import {
   } from 'use-query-params';
 
 
-const Board=({data, boardname})=>{
-    
-    const [filters, setFilters] = useQueryParam('filter', ObjectParam);
-    //how to set default filter? when i try withDefault, it infinite loops on FILTER RUN
-    const [sorts, setSorts] = useQueryParam('sort', withDefault(StringParam, "medium"));
+const Board=({data, filters, sorts, boardname})=>{
     const [needSort, setNeedSort] = useState(false);
     const [needFilter, setNeedFilter] = useState(false);
-    const [status, setStatus] = useState("null");
     const [entryArray, setEntryArray] = useState([]); //BASE DATA
     const [filteredArray, setFilteredArray] = useState([]); //ENTRY ARRAY, FILTERED + SORTED
 
@@ -48,58 +43,6 @@ const Board=({data, boardname})=>{
         populateEntryArray(boardname);
     }, [data, boardname]);
 
-    //if entryArray changes, update filteredarray!
-    useEffect(() => {
-        setNeedFilter(true);        
-    }, [entryArray]);
-
-    // function renderEntry(i) {
-    //     return <Entry value={i} />;
-    // };
-
-    //this function determines the info string for sorts and filters
-    function infoStatus(filters, sorts) {
-        // console.log("infostatus");
-        let sortstring = "";
-        let filterstring = "";
-        let fullstring = "";
-
-        if (filters && Object.entries(filters).length > 0) {
-            filterstring = "Filtered by: ";
-            Object.entries(filters).forEach(([key, value]) => {
-                filterstring +="\"" + value + "\", ";
-            });
-            filterstring = filterstring.substring(0, filterstring.length - 2);
-        }
-
-        if (sorts) {
-            sortstring = "Sorted by: " + sorts;
-        }
-
-        if (filterstring.length > 5) {
-            fullstring = sortstring + " || " + filterstring;
-        } else {
-            fullstring = sortstring;
-        }
-
-
-
-        return fullstring;
-    }
-
-    //if filters or sorts change, update infostatus
-    useEffect(() => {
-        setStatus(infoStatus(filters, sorts));
-        if (needSort === false && entryArray.length > 0 ) { setNeedSort(true); }
-        // why does sNS(true) prevent entryArray from populating when entryArray == 0? I guess it overwrites the data load?
-    }, [sorts]);
-
-    useEffect(() => {
-        setStatus(infoStatus(filters, sorts));
-        //console.log('filters is ', filters);
-        if (needFilter === false && entryArray.length > 0 ) { setNeedFilter(true); }
-    }, [filters]);
-
 
     //
     //FILTERING THE ENTRYARRAY:
@@ -109,6 +52,17 @@ const Board=({data, boardname})=>{
     // 2) WHEN THE FILTER PARAMETER CHANGES
     //
 
+    //1. if entryArray changes, update filteredarray!
+    useEffect(() => {
+        setNeedFilter(true);        
+    }, [entryArray]);
+
+    //2. if the filter parameters change, update filteredarray!
+    useEffect(() => {
+        if (needFilter === false && entryArray.length > 0 ) { setNeedFilter(true); }
+    }, [filters]);
+
+    //if "needfilter" is true, filter the array and reset needfilter
     useEffect(() => {
 
         function containsFilter(a, filterkey, filtervalue) {
@@ -156,42 +110,36 @@ const Board=({data, boardname})=>{
             setNeedSort(true);
             let newArray = filterArray(entryArray, filters);
             setFilteredArray(newArray);
-            //console.log(newArray);
         }
     }, [needFilter]);
 
-    function testFilter() {
-        if (!filters || Object.entries(filters).length === 1) {
-            //newfilter = {};
-            console.log(2);
-            setFilters({medium: "digital", title: "UI Userflow 1"});
-        }
-        else if (Object.entries(filters).length === 0){
-            //newfilter = {medium: "2d" };
-            setFilters({medium: "2d"});
-        } else {
-            console.log(3);
-            //newfilter = {medium: "digital", title: "UI Userflow 1"};
-            setFilters({});
-        }
-    }
-
+    
 
     //
     // SORTING THE FILTEREDARRAY:
     // THE ARRAY WILL SORT ONCE WHENEVER 'needSort' IS TRUE.
     //THE ARRAY IS SORTED EITHER:
     //1) WHEN THE ARRAY CHANGES
+    //1a) WHEN FILTERING HAS RUN
     //2) WHEN THE SORT PARAMETER CHANGES
     //
 
-    //if filteredArray has changed in length and is not empty, sort it again
+    //1. if filteredArray has changed in length and is not empty, sort it again
     useEffect(() => {
         console.log("FILTEREDARRAY LENGTH CHECK", filteredArray.length);
         if (filteredArray.length !== 0) {
             setNeedSort(true);
         }
     }, [filteredArray.length]);
+
+    //1a. see the needFilter useEffect for where sorting is toggled if filtering has run
+    //2. if the sort parameters change, sort it again
+    useEffect(() => {
+        if (needSort === false && entryArray.length > 0 ) { setNeedSort(true); }
+        // why does sNS(true) prevent entryArray from populating when entryArray == 0? I guess it overwrites the data load?
+    }, [sorts]);
+
+
 
     //if "needsort" is true, sort the array and reset needsort
     useEffect(() => {
@@ -259,26 +207,9 @@ const Board=({data, boardname})=>{
         }
     }, [needSort]);
 
-
-    function testSort2() {
-        if (sorts === "date") {
-            setSorts("medium");
-        } else if (sorts === "medium") {
-            setSorts("title");
-        }
-         else {
-            setSorts("date");
-        }
-        
-    }
-
-
     return (
         <div className="display-board">
-          <div className="status">{status}</div>
           {/* <button onClick={testSort}>add + sort</button> */}
-          <button onClick={testSort2}>switch sort</button>
-          <button onClick={testFilter}>switch filter</button>
           <div className="board-row">
 
             { filteredArray.map(x => (

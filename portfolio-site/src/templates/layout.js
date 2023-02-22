@@ -3,10 +3,22 @@ import React, {useState, useEffect } from 'react';
 
 import entries from '../data.json';
 import Header from '../header.js';
+import {
+  useQueryParam,
+  StringParam,
+  ObjectParam,
+  withDefault
+} from 'use-query-params';
+
 
 const Layout = () => {
   const [data, setData] = useState(null);
   const [industries, setIndustries] = useState(["front-end", "illustration"]);
+
+  //SORT and FILTER variables are held here so that both header and outlet can access them
+  const [filters, setFilters] = useQueryParam('filter', ObjectParam);
+  //how to set default filter? when i try withDefault, it infinite loops on FILTER RUN
+  const [sorts, setSorts] = useQueryParam('sort', withDefault(StringParam, "medium"));  
 
   //"constructor": initializes data
   useEffect(() => {
@@ -43,12 +55,10 @@ const Layout = () => {
     setData(importJson(entries));
   }, []);
 
- 
-
     return (
         <div className="app">
-          <Header industries={industries}/>
-          <Outlet context={data}/>
+          <Header industries={industries} setFilters={setFilters} filters={filters} sorts={sorts} setSorts={setSorts}/>
+          <Outlet context={{data, filters, sorts}}/>
       </div>
     );
 }
