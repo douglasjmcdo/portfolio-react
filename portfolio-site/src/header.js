@@ -112,8 +112,8 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
             <div className="status">
                 {status}
                 <div className="searchSettings">
-                    <button onClick={testFilter}>switch filter</button>
-                    <button onClick={testSort2}>switch sort</button>
+                    {/* <button onClick={testFilter}>switch filter</button>
+                    <button onClick={testSort2}>switch sort</button> */}
                     <button onClick={openSidebar}>show sidebar</button>
                     <Sidebar filters={filters} setFilters={setFilters} sorts={sorts} setSorts={setSorts} industries={industries} mediums={mediums}
                              showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
