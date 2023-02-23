@@ -7,11 +7,27 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
     const [checks, setChecks] = useState("");
     const [checkMValue, setCheckMValue] = useState({});
     const [checkIValue, setCheckIValue] = useState({});
+    const [reset, setReset] = useState(false);
 
     function closeSidebar() {
         console.log(showSidebar);
         setShowSidebar(false);
     }
+
+    function resetSearch() {
+        setReset(true);
+        setFilters({});
+        console.log("reset search");
+    }
+
+    useEffect(() => {
+        //if we are resetting AND filters is done, THEN change sorts
+        if (reset) {
+            setSorts("date");
+            setReset(false);
+        }
+        //eslint-disable-next-line
+    }, [filters])
 
     //set up radio for sorting with on initialization. 
     //current options are hardcoded into var sortbyoptions: industry, medium, date, title
@@ -32,6 +48,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
                         type="radio"
                         name="sort"
                         value={sortbyoptions[x]}
+                        //TODO: ensure that checked mirrors 'sorts' variable
                         onChange={handleRChange}
                         className="form-check-input"
                     />
@@ -69,6 +86,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
         if (newcval !== checkMValue) {
             setCheckMValue(newcval);
         }
+    //eslint-disable-next-line
     }, [industries, mediums, filters]);
 
     //check values have successfully been determined: now we make checkboxes out of them
@@ -136,45 +154,50 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
             }
         }
 
-        var newIndChecks = [];
+        function setNewChecks() {
+            var newIndChecks = [];
 
-        newIndChecks.push(<div className="checkmarkheader" key="indh">INDUSTRIES:</div>);
-        Object.entries(checkIValue).forEach(([key, value]) => {
-                newIndChecks.push(
-                    <div className="form-check" key={key}>
-                    <label>
-                        <input
-                            type="checkbox"
-                            name={key}
-                            checked={value}
-                            onChange={(event) => handleFChange(event, "industry")}
-                            className="form-check-input"
-                        />
-                        { key }
-                    </label>
-                </div>
-                );
-        });
+            newIndChecks.push(<div className="checkmarkheader" key="indh">INDUSTRIES:</div>);
+            Object.entries(checkIValue).forEach(([key, value]) => {
+                    newIndChecks.push(
+                        <div className="form-check" key={key}>
+                        <label>
+                            <input
+                                type="checkbox"
+                                name={key}
+                                checked={value}
+                                onChange={(event) => handleFChange(event, "industry")}
+                                className="form-check-input"
+                            />
+                            { key }
+                        </label>
+                    </div>
+                    );
+            });
+    
+            newIndChecks.push(<div className="checkmarkheader" key="mediumh">MEDIUMS:</div>);
+            Object.entries(checkMValue).forEach(([key, value]) => {
+                    newIndChecks.push(
+                        <div className="form-check" key={key}>
+                        <label>
+                            <input
+                                type="checkbox"
+                                name={key}
+                                checked={value}
+                                onChange={(event) => handleFChange(event, "medium")}
+                                className="form-check-input"
+                            />
+                            { key }
+                        </label>
+                    </div>
+                    );
+            });
+    
+            setChecks(newIndChecks);
+        }
 
-        newIndChecks.push(<div className="checkmarkheader" key="mediumh">MEDIUMS:</div>);
-        Object.entries(checkMValue).forEach(([key, value]) => {
-                newIndChecks.push(
-                    <div className="form-check" key={key}>
-                    <label>
-                        <input
-                            type="checkbox"
-                            name={key}
-                            checked={value}
-                            onChange={(event) => handleFChange(event, "medium")}
-                            className="form-check-input"
-                        />
-                        { key }
-                    </label>
-                </div>
-                );
-        });
-
-        setChecks(newIndChecks);
+        setNewChecks();
+        // eslint-disable-next-line        
     }, [checkIValue, checkMValue]);
     
 
@@ -195,8 +218,8 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
                 <div className="search">searchbar here</div>
                 <div className="sortselect">{radio}</div>
                 <div className="filterselect">{checks}</div>
-                <div>{showSidebar}</div>
-                <button onClick={closeSidebar}>close sidebar</button>
+                <button onClick={resetSearch}> Reset Search</button>
+                <button onClick={closeSidebar}>Close Sidebar</button>
             </div>
         </div>
     );
