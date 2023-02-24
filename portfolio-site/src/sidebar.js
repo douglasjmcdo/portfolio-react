@@ -1,5 +1,5 @@
 import './css/sidebar.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showSidebar, setShowSidebar})=>{
     const [sidebarclass, setSidebarclass] = useState("sidebar");
@@ -8,29 +8,50 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
     const [checkMValue, setCheckMValue] = useState({});
     const [checkIValue, setCheckIValue] = useState({});
     const [reset, setReset] = useState(false);
+    const [search, setSearch] = useState("")
 
+
+    //SIDEBAR MANAGEMENT
+    //sets showSidebar
     function closeSidebar() {
-        console.log(showSidebar);
         setShowSidebar(false);
     }
 
-    function resetSearch() {
-        setReset(true);
-        setFilters({});
-        console.log("reset search");
+    //opens and closes the sidebar
+    useEffect(() => {
+        if (showSidebar) {
+            setSidebarclass("sidebar open")
+        }
+        else {
+            setSidebarclass("sidebar")
+        }
+    }, [showSidebar]);
+    
+    //these watch for clicks outside 
+    const wrapperRef = useRef(null);
+    OutsideAlert(wrapperRef);
+
+    //if there's a click outside while the sidebar is open, close the sidebar
+    function OutsideAlert(ref) {
+        useEffect(() => {
+            function outsideClick(event) {
+                if (ref.current && !ref.current.contains(event.target) && sidebarclass === "sidebar open") {
+                    console.log("outside click");
+                    closeSidebar();
+                }
+            }
+
+            document.addEventListener("mousedown", outsideClick);
+            return () => {
+                document.removeEventListener("mousedown", outsideClick);
+            };
+        }, [ref, sidebarclass]);
     }
 
-    useEffect(() => {
-        //if we are resetting AND filters is done, THEN change sorts
-        if (reset) {
-            setSorts("date");
-            setReset(false);
-        }
-        //eslint-disable-next-line
-    }, [filters])
-
+    //RADIO SORT
     //set up radio for sorting with on initialization. 
     //current options are hardcoded into var sortbyoptions: industry, medium, date, title
+    //if sorts updates, then make sure the radio dial rerenders
     useEffect(() => {
         var sortbyoptions = ["industry", "medium", "date", "title"];
 
@@ -48,6 +69,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
                         type="radio"
                         name="sort"
                         value={sortbyoptions[x]}
+                        checked={sorts === sortbyoptions[x]}
                         //TODO: ensure that checked mirrors 'sorts' variable
                         onChange={handleRChange}
                         className="form-check-input"
@@ -57,8 +79,9 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
           </div>)
         }
         setRadio(newRadio);
-    }, [setSorts])
+    }, [sorts, setSorts])
 
+    //CHECKBOX FILTER
     //set up checkbox variables for filtering with. values are passed in from industries and mediums
     useEffect(() => {
         var newcval = {};
@@ -199,23 +222,82 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
         setNewChecks();
         // eslint-disable-next-line        
     }, [checkIValue, checkMValue]);
+
+    //SEARCH BAR
+    //on searchbar enter key, set search
+    function handleSChange(changeEvent) {
+        //changeEvent.preventDefault();
+        if (changeEvent.key === 'Enter'){
+            setSearch(changeEvent.target.value);
+            console.log("new search");
+        }
+    }
+
+    //if search changes, update the filters accordingly
+    useEffect(() => {
+        if (search.length > 0) {
+            //there is a search: replace current search
+        var addsearchto = {};
+        if (filters) {
+            addsearchto = filters;
+        }
+        addsearchto["search"] = search;
+        setFilters(addsearchto);    
+        } else {
+            //no search: remove search if it exists
+            if (filters) {
+                var removesearchfrom = filters;
+                delete removesearchfrom["search"];
+                setFilters(removesearchfrom);
+            }
+        }
+    }, [search]);
+
+    //the search bar itself
+    const SearchBar=()=>{
+        return (
+            <input
+                type="text"
+                placeholder="Search Entries"
+                onKeyUp={handleSChange}
+                defaultValue={search}
+            />
+        )
+    }
+
+
+    //RESETTING SEARCH, SORT AND FILTER
+    function resetSearch() {
+        setReset(true);
+        if (search) {
+            setSearch("");
+        }
+        if (filters && Object.keys(filters).length !== 0) {
+            setFilters({});
+        } else {
+            console.log("NO FILTERS. RESET DATE");
+            setSorts("date");
+            setReset(false);
+        }
+
+        console.log("reset search");
+    }
+
+    //if we are resetting: wait for filters to update, THEN change sorts
+    useEffect(() => {
+        if (reset) {
+            setSorts("date");
+            setReset(false);
+        }
+        //eslint-disable-next-line
+    }, [filters])
     
 
-    //opens and closes the sidebar
-    //todo: implement close on click outside
-    useEffect(() => {
-        if (showSidebar) {
-            setSidebarclass("sidebar open")
-        }
-        else {
-            setSidebarclass("sidebar")
-        }
-    }, [showSidebar]);
 
     return (
-        <div className={sidebarclass}>
+        <div className={sidebarclass} ref={wrapperRef}>
             <div className="sidebar-contents">
-                <div className="search">searchbar here</div>
+                <SearchBar className="searchbar" />
                 <div className="sortselect">{radio}</div>
                 <div className="filterselect">{checks}</div>
                 <button onClick={resetSearch}> Reset Search</button>

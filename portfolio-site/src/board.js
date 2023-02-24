@@ -58,7 +58,30 @@ const Board=({data, filters, sorts, boardname})=>{
     //if "needfilter" is true, filter the array and reset needfilter
     useEffect(() => {
         function containsFilter(a, filterkey, filtervalue) {
-            console.log(filtervalue)
+            //search: 
+            if (filterkey === "search") {
+                console.log("SEARCH");
+                let isMatch = false;
+
+                //for each value, see if the filtervalue exists in it. if yes to any, mark as match
+                isMatch = Object.values(a).find((el) => {
+                    if (typeof(el) === "string") {
+                        return el.toLowerCase().includes(filtervalue);
+                    } else if (typeof(el) === "object") {
+                        //check each element in the array; return true if any match
+                        let inArray = false;
+                        inArray = el.find((inel) => {
+                            return inel.toLowerCase().includes(filtervalue);
+                        })
+                        return inArray;
+                    } else {
+                        return el.toString().toLowerCase().includes(filtervalue);
+                    }
+                })
+                return isMatch;
+            }
+
+            //all other filters:
             if (typeof(a[filterkey]) === "object") {
                 for (let i in a[filterkey]) {
                     if (a[filterkey][i] === filtervalue) {

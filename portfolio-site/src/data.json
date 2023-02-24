@@ -16,7 +16,7 @@
         ],
         "onmainpage": true,
         "date": 2023,
-        "data": "../img/react-portfolio-ui/portfolio-ui-v11.png",
+        "img": "../img/react-portfolio-ui/portfolio-ui-v11.png",
         "alt": "Three screens of UI mockups for this porfolio website",
         "caption": "First page of UI Initial Mockups. "
       },
@@ -36,7 +36,7 @@
         ],
         "onmainpage": true,
         "date": 1023,
-        "data": "../img/react-portfolio-ui/portfolio-ui-v13.png",
+        "img": "../img/react-portfolio-ui/portfolio-ui-v13.png",
         "alt": "Rough sketch of a userflow design of this portfolio website.",
         "caption": "Initial design of UI userflow. I wanted to keep the UX as streamlined and cohesive as possible."
       },
@@ -57,7 +57,7 @@
         ],
         "onmainpage": true,
         "date": 2017,
-        "data": "../img/2d-studio/2d4.png",
+        "img": "../img/2d-studio/2d4.png",
         "alt": "A set of 6 black and white compositions, all using typography of the letters D and M.",
         "caption": "An exploration into typography and compositions using my own initials."
       },
@@ -77,7 +77,7 @@
         ],
         "onmainpage": true,
         "date": 2017,
-        "data": "../img/2d-studio/2d5.png",
+        "img": "../img/2d-studio/2d5.png",
         "alt": "Two identical papercraft compositions made with different colors and flipped.",
         "caption": "An exploration into the effects of color and direction."
       },
@@ -97,9 +97,11 @@
         "insubpage": [],
         "onmainpage": true,
         "date": 2017,
-        "data": "./img/2d-studio/2d1.jpg",
+        "img": "./img/2d-studio/2d1.jpg",
         "alt": "Two lino prints of a skull and feather, printed on white and golden paper.",
         "caption": "This is the subpage for 2D Studio!!!"
       }
+
+      
     ]
   }

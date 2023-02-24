@@ -8,8 +8,6 @@ const Entry=(data)=>{
     const type = data.value["type"];
     const [openBig, setOpenBig] = useState(false);
     
-    //todo: entry div: on-click, open the ImageMode component
-
     //initialize econtent
     useEffect(() => {
       function determineContent(source) {
@@ -20,7 +18,7 @@ const Entry=(data)=>{
                 {data.value["title"]}
               </div>
               <div className="eContent">          
-                <img className="entryimg" src={source.value["data"]} alt={source.value["alt"]}></img>
+                <img className="entryimg" src={source.value["img"]} alt={source.value["alt"]}></img>
               </div>
             </div>
           );
@@ -35,7 +33,7 @@ const Entry=(data)=>{
                   {data.value["title"]}
                 </div>
                 <div className="eContent">          
-                  <img className="entryimg" src={source.value["data"]} alt={source.value["alt"]}></img>
+                  <img className="entryimg" src={source.value["img"]} alt={source.value["alt"]}></img>
                 </div>
               </div>
             </Link>
@@ -61,7 +59,7 @@ const Entry=(data)=>{
     }, [data, type]);
 
     return (
-      <div>{econtent}
+      <div className="contentandbig">{econtent}
       <div hidden={!openBig}><BigImage data={data} setBig={setOpenBig}/></div>
       </div>
 

@@ -74,11 +74,13 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
         if (!filters || Object.entries(filters).length === 1) {
             //newfilter = {};
             console.log(2);
-            setFilters({medium: "digital", title: "UI Userflow 1"});
+            setFilters({medium: "2d, traditional", industry: "illustration"});
+
         }
         else if (Object.entries(filters).length === 0){
             //newfilter = {medium: "2d" };
-            setFilters({medium: "2d, traditional"});
+            setFilters({search: "color"});
+
         } else {
             console.log(3);
             //newfilter = {medium: "digital", title: "UI Userflow 1"};
@@ -86,16 +88,16 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
         }
     }
     
-    function testSort2() {
-        if (sorts === "date") {
-            setSorts("medium");
-        } else if (sorts === "medium") {
-            setSorts("title");
-        }
-         else {
-            setSorts("date");
-        }
-    }
+    // function testSort2() {
+    //     if (sorts === "date") {
+    //         setSorts("medium");
+    //     } else if (sorts === "medium") {
+    //         setSorts("title");
+    //     }
+    //      else {
+    //         setSorts("date");
+    //     }
+    // }
 
     function openSidebar() {
         console.log(showSidebar);
@@ -112,8 +114,8 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
             <div className="status">
                 {status}
                 <div className="searchSettings">
-                    {/* <button onClick={testFilter}>switch filter</button>
-                    <button onClick={testSort2}>switch sort</button> */}
+                     <button onClick={testFilter}>switch filter</button>
+                    {/*<button onClick={testSort2}>switch sort</button> */}
                     <button onClick={openSidebar}>show sidebar</button>
                     <Sidebar filters={filters} setFilters={setFilters} sorts={sorts} setSorts={setSorts} industries={industries} mediums={mediums}
                              showSidebar={showSidebar} setShowSidebar={setShowSidebar} />

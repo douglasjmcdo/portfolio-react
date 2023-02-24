@@ -34,7 +34,7 @@ const BigImage=({data, setBig})=>{
     
     return (
         <div className="bigimage" onClick={goodbye}>
-                <img className="thefile" src={data.value["data"]} alt={data.value["alt"]}/>
+                <img className="thefile" src={data.value["img"]} alt={data.value["alt"]}/>
                 <div className="bigtitlebar">
                     <div className="bigtitle">{data.value["title"]}</div>
                     <div className="bigtags">{ tags }</div>
