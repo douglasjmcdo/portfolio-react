@@ -7,6 +7,7 @@ const Board=({data, filters, sorts, boardname})=>{
     const [needFilter, setNeedFilter] = useState(false);
     const [entryArray, setEntryArray] = useState([]); //BASE DATA
     const [filteredArray, setFilteredArray] = useState([]); //ENTRY ARRAY, FILTERED + SORTED
+    const [bigindex, setBigindex] = useState(-1); //determines which bigindex is showing. -1 = none
 
     //on data load or url change, populate entry array. 
     useEffect(() => {
@@ -227,13 +228,22 @@ const Board=({data, filters, sorts, boardname})=>{
         // eslint-disable-next-line
     }, [needSort]);
 
+    //BIGINDEX:
+    //if bigindex reaches a nonexistent array number, then set it to -1
+    useEffect(() => {
+        if (bigindex >= filteredArray.length) {
+            setBigindex(-1);
+        }
+
+    }, [bigindex]);
+
     return (
         <div className={"display-board " + boardname}>
           {/* <button onClick={testSort}>add + sort</button> */}
           <div className="board-row">
 
-            { filteredArray.map(x => (
-                <Entry value={x} key={x["title"]}/>
+            { filteredArray.map((x, index) => (
+                <Entry data={x} index={index} key={x["title"]} bigindex={bigindex} setBigindex={setBigindex}/>
             )) }
           </div>
         </div>

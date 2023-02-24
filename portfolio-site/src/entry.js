@@ -3,9 +3,9 @@ import './css/entry.css';
 import { Link } from 'react-router-dom';
 import BigImage from './bigimage.js';
 
-const Entry=(data)=>{
+const Entry=({data, index, bigindex, setBigindex})=>{
     const [econtent, setEcontent] = useState(<div></div>);
-    const type = data.value["type"];
+    const type = data["type"];
     const [openBig, setOpenBig] = useState(false);
     
     //initialize econtent
@@ -13,35 +13,35 @@ const Entry=(data)=>{
       function determineContent(source) {
         if (type === "individual") {
           setEcontent(
-            <div className="entry" onClick={openEntry} key={ source.value["id"] }>
+            <div className="entry" onClick={openEntry} key={ source["id"] }>
               <div className="eTitle">
-                {data.value["title"]}
+                {data["title"]}
               </div>
               <div className="eContent">          
-                <img className="entryimg" src={source.value["img"]} alt={source.value["alt"]}></img>
+                <img className="entryimg" src={source["img"]} alt={source["alt"]}></img>
               </div>
             </div>
           );
         }
 
         else {
-          var linkto = "/documentation/" + source.value["url"];
+          var linkto = "/documentation/" + source["url"];
           if (type === "sub-page-c") {
-            linkto = "/collection/" + source.value["url"];
+            linkto = "/collection/" + source["url"];
           }
           setEcontent(
-            <Link to={linkto} key={ source.value["id"] }>
+            <Link to={linkto} key={ source["id"] }>
               <div className="entry">
                 <div className="centertext">
                   <div className="eTitle subpage">
-                    {data.value["title"]}
+                    {data["title"]}
                   </div>
                   <div className="ecaption">
-                    {data.value["caption"]}
+                    {data["caption"]}
                   </div>
                 </div>
                 <div className="eContent">          
-                  <img className="entryimg" src={source.value["img"]} alt={source.value["alt"]}></img>
+                  <img className="entryimg" src={source["img"]} alt={source["alt"]}></img>
                 </div>
               </div>
             </Link>
@@ -49,21 +49,27 @@ const Entry=(data)=>{
         }
       }
 
-      function openEntry() {
-        if (type === "individual") {
-            setOpenBig(true);
-        }
-        else {
-            alert("this is a documentation subpage! open that page!");
-        }
-      }
-
       determineContent(data);
     }, [data, type]);
 
+    //want to open the bigimage? set bigindex to match index
+    function openEntry() {
+      setBigindex(index);
+    }
+
+    //if the index and bigindex match, then open bigimage
+    useEffect(() => {
+      if (index === bigindex) {
+        setOpenBig(true);
+      }
+    }, [index, bigindex]);
+
     return (
       <div className="contentandbig">{econtent}
-      <div hidden={!openBig}><BigImage data={data} setBig={setOpenBig}/></div>
+      <div hidden={!openBig}>
+        <BigImage info={data} setBig={setOpenBig} tabindex="0"
+                  index={index} bigindex={bigindex} setBigindex={setBigindex}/>
+      </div>
       </div>
 
     );
