@@ -44,7 +44,21 @@ const Documentation = () => {
                         nextdiv = (<h3 className="dheader" key={content}>{content}</h3>)
                         break;
                     case "board":
-                        nextdiv = (<div className="dtext" key={content}>BECOME BOARD</div>)
+                        nextdiv = (<Board key={content} className="dboard" 
+                            data={data["data"]} filters={data["filters"]} sorts={data["sorts"]} boardname={content} />)
+                        break;
+                    case "video":
+                        let vidtype = content.split(".");
+                        vidtype = "video/" + vidtype[vidtype.length - 1];
+                        console.log(vidtype);
+
+                        nextdiv = (
+                        <video className="dvid" key={content}
+                        controls
+                        preload="auto">
+                            <source src={content} type={vidtype}/>
+                        </video>
+                        )
                         break;
                     default:
                         console.log("no case for ", type);
@@ -60,8 +74,10 @@ const Documentation = () => {
 
     return( 
         <div id="documentation">
-           <div>DOCUMENTATION: {subpageinfo?.title }</div>
-           <div>{subpageinfo?.caption}</div>
+            <div className="documainheader">
+                <h2>DOCUMENTATION: {subpageinfo?.title }</h2>
+                <h3>{subpageinfo?.caption}</h3>
+            </div>
            <div className="templatewrapper">{templatearray}</div>
         </div>
         )

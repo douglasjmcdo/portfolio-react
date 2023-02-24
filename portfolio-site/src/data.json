@@ -135,10 +135,201 @@
           ["board", "cc-mvp2"],
           ["text", "In order to allow for custom color inputs, we redesigned our app to calculate the color in the JavaScript front-end and implemented custom color picking. We also improved the back-end generator and gave the UI a major overhaul so that the buttons better convey their behaviours and the app has a more consistent and accessible display."],
           ["text", "Here is a demo of our finished MVP2:"],
-          ["video", "video.mp4"]
+          ["video", "../img/color-code/2021-12-05 15-37-24.mkv"]
         ],
         "alt": "Documentation for the web page Color Code",
         "caption": "Palette Generator for Web Development"
+      },
+      {
+        "id": 7,
+        "title": "Color Code Persona",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-persona-uiv1"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/cc1.png",
+        "alt": "Persona for the color-code app, describing an independent web developer.",
+        "caption": ""
+      },
+      {
+        "id": 8,
+        "title": "Color Code Key Problem",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-persona-uiv1"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/cc2.png",
+        "alt": "Key problem and intended solution that color code app provides.",
+        "caption": ""
+      },
+      {
+        "id": 9,
+        "title": "Color Code Initial UI 1",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-persona-uiv1"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/rough_ui_v1p1.png",
+        "alt": "Initial UI designs for a mobile app, showing four screens with annotations",
+        "caption": ""
+      },
+      {
+        "id": 10,
+        "title": "Color Code Initial UI 2",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-persona-uiv1"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/rough_ui_v1p2.png",
+        "alt": "Initial UI designs for a mobile app, showing one annotated screen and a flowchart between screens",
+        "caption": ""
+      },
+      {
+        "id": 1030,
+        "title": "Color Code Initial UI 3",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-persona-uiv1"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/rough_ui_v1p3.png",
+        "alt": "Initial UI designs for a website, showing one annotated screen and a flowchart between screens",
+        "caption": ""
+      },
+      {
+        "id": 11,
+        "title": "Color Code Revised UI 1",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-uiv2"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/rough_ui_v21_ano.png",
+        "alt": "",
+        "caption": ""
+      },
+      
+      {
+        "id": 12,
+        "title": "Color Code Revised UI 2",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-uiv2"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/rough_ui_v22_ano.png",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "id": 13,
+        "title": "Color Code Revised UI 3",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-uiv2"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/rough_ui_v23_ano.png",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "id": 14,
+        "title": "Color Code MVP1 1",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-mvp1"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/mvp1 v1.png",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "id": 15,
+        "title": "Color Code MVP1 2",
+        "type": "individual",
+        "medium": [
+          "digital"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [
+          "cc-mvp1"
+        ],
+        "onmainpage": false,
+        "date": 2021,
+        "img": "../img/color-code/mvp1 v2.png",
+        "alt": "",
+        "caption": ""
       }
 
       

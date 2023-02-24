@@ -228,7 +228,7 @@ const Board=({data, filters, sorts, boardname})=>{
     }, [needSort]);
 
     return (
-        <div className="display-board">
+        <div className={"display-board " + boardname}>
           {/* <button onClick={testSort}>add + sort</button> */}
           <div className="board-row">
 

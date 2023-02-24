@@ -3,7 +3,14 @@
     flex-direction: column;
     text-align: center;
     padding: 10px;
-    margin: 10px 10vh;
+    margin: 10px 10vw;
+    margin-bottom: 10vh;
+    background-color: palegoldenrod
+}
+
+.documainheader {
+    text-align: center;
+    margin: 20px;
 }
 
 .dtext {
@@ -13,4 +20,13 @@
 .dheader {
     padding-top: 10px;
     margin-bottom: 2px;
+}
+
+.dboard {
+    padding: 15px;
+}
+
+.dvid {
+    margin: 10px 10vw;
+    background-color: blue
 }
