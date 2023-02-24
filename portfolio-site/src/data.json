@@ -99,8 +99,49 @@
         "date": 2017,
         "img": "./img/2d-studio/2d1.jpg",
         "alt": "Two lino prints of a skull and feather, printed on white and golden paper.",
-        "caption": "This is the subpage for 2D Studio!!!"
+        "caption": "Fall 2017 Collection"
+      },
+      {
+        "id": 6,
+        "title": "Color Code",
+        "url": "color-code",
+        "type": "sub-page-d",
+        "medium": [
+          "html",
+          "react"
+        ],
+        "industry": [
+          "front-end"
+        ],
+        "insubpage": [],
+        "onmainpage": true,
+        "date": 2021,
+        "img": "./img/color-code/rough_ui_v1p2.png",
+        "template": [
+          ["text", "ColorCode is a web app intended to help independent software developers choose color palettes for their UI. ColorCode development began in September 2021 and was completed with two partners by December 2021. My primary responsibility is UI design and front-end development."],
+          ["text", "To pitch this idea, my team developed a persona and rough draft wireframe for both mobile and desktop."],
+          ["board", "cc-persona-uiv1"],
+          ["text", "Following user feedback on our thumbnails, we found that many users felt intimidated by the number of features provided and terminology they didn't recognize."],
+          ["text", "To fix this, I iterated on the UI thumbnails to make it more approachable for users without color theory experience."],
+          ["board", "cc-uiv2"],
+          ["header", "MVP1"],
+          ["text", "In order to develop our MVP1 within 2 weeks, we discovered we needed to tighten the scope of our app. Based on user feedback from our thumbnails, we decided to focus on the generation rather than the alteration of palettes."],
+          ["text", "We implemented our MVP1 using Python, Django and React.js."],
+          ["board", "cc-mvp1"],
+          ["header", "MVP2"],
+          ["text", "With our MVP1 complete, we ran user testing and interviews with five users that matched our persona in order to determine our priorities for MVP2."],
+          ["text", "We were surprised by how positive user reactions were to our app, and we also gained helpful insight on what needed improving. Most urgently, users were dissatisfied with the color selection process, citing the difficulty of identifying which color they had chosen and the lack of custom hex code input."],
+          ["text", "Based on this research, we developed a list of improvements for MVP2."],
+          ["board", "cc-mvp2"],
+          ["text", "In order to allow for custom color inputs, we redesigned our app to calculate the color in the JavaScript front-end and implemented custom color picking. We also improved the back-end generator and gave the UI a major overhaul so that the buttons better convey their behaviours and the app has a more consistent and accessible display."],
+          ["text", "Here is a demo of our finished MVP2:"],
+          ["video", "video.mp4"]
+        ],
+        "alt": "Documentation for the web page Color Code",
+        "caption": "Palette Generator for Web Development"
       }
+
+      
 
       
     ]

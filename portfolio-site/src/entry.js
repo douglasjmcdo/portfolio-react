@@ -24,13 +24,21 @@ const Entry=(data)=>{
           );
         }
 
-        else if (type === "sub-page-c") {
-          var linkto = "/collection/" + source.value["url"];
+        else {
+          var linkto = "/documentation/" + source.value["url"];
+          if (type === "sub-page-c") {
+            linkto = "/collection/" + source.value["url"];
+          }
           setEcontent(
             <Link to={linkto} key={ source.value["id"] }>
               <div className="entry">
-                <div className="eTitle">
-                  {data.value["title"]}
+                <div className="centertext">
+                  <div className="eTitle subpage">
+                    {data.value["title"]}
+                  </div>
+                  <div className="ecaption">
+                    {data.value["caption"]}
+                  </div>
                 </div>
                 <div className="eContent">          
                   <img className="entryimg" src={source.value["img"]} alt={source.value["alt"]}></img>
@@ -38,11 +46,6 @@ const Entry=(data)=>{
               </div>
             </Link>
           );
-        }
-
-        else {
-          //todo: implement!
-          setEcontent(<div>Sub Page: Documentation</div>)
         }
       }
 

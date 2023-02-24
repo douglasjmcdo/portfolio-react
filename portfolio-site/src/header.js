@@ -68,37 +68,7 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
         setStatus(infoStatus(filters, sorts));
     }, [sorts, filters]);
 
-
-    //BUTTON TESTERS. REMOVE ONCE BUTTONS ARE NO LONGER NEEDED
-    function testFilter() {
-        if (!filters || Object.entries(filters).length === 1) {
-            //newfilter = {};
-            console.log(2);
-            setFilters({medium: "2d, traditional", industry: "illustration"});
-
-        }
-        else if (Object.entries(filters).length === 0){
-            //newfilter = {medium: "2d" };
-            setFilters({search: "color"});
-
-        } else {
-            console.log(3);
-            //newfilter = {medium: "digital", title: "UI Userflow 1"};
-            setFilters({});
-        }
-    }
-    
-    // function testSort2() {
-    //     if (sorts === "date") {
-    //         setSorts("medium");
-    //     } else if (sorts === "medium") {
-    //         setSorts("title");
-    //     }
-    //      else {
-    //         setSorts("date");
-    //     }
-    // }
-
+    //access the sort/filter menu
     function openSidebar() {
         console.log(showSidebar);
         setShowSidebar(true);
@@ -114,8 +84,6 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
             <div className="status">
                 {status}
                 <div className="searchSettings">
-                     <button onClick={testFilter}>switch filter</button>
-                    {/*<button onClick={testSort2}>switch sort</button> */}
                     <button onClick={openSidebar}>show sidebar</button>
                     <Sidebar filters={filters} setFilters={setFilters} sorts={sorts} setSorts={setSorts} industries={industries} mediums={mediums}
                              showSidebar={showSidebar} setShowSidebar={setShowSidebar} />

@@ -45,7 +45,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
             return () => {
                 document.removeEventListener("mousedown", outsideClick);
             };
-        }, [ref, sidebarclass]);
+        }, [ref]);
     }
 
     //RADIO SORT

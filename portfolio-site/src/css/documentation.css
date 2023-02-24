@@ -1,0 +1,16 @@
+.templatewrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    margin: 10px 10vh;
+}
+
+.dtext {
+    padding: 5px;
+}
+
+.dheader {
+    padding-top: 10px;
+    margin-bottom: 2px;
+}

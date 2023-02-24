@@ -4,6 +4,7 @@ import './css/index.css';
 import Layout from './templates/layout.js';
 import MainPage from './templates/home.js';
 import Collection from './templates/collection.js';
+import Documentation from './templates/documentation';
 
 import { QueryParamProvider } from 'use-query-params';
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
@@ -18,6 +19,7 @@ import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
               <Route path="/" element={<Layout />}>
                 <Route index element={<MainPage />} />
                 <Route path="/collection/*" element={<Collection />} />
+                <Route path="/documentation/*" element={<Documentation />} />
               </Route>
             </Routes>
       </QueryParamProvider>

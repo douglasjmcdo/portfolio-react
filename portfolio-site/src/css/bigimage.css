@@ -8,6 +8,7 @@
     left: 0;
     text-align: center;
     padding: 5vh 0 0 0;
+    z-index: 2;
 }
 
 .thefile {
