@@ -234,8 +234,7 @@ const Board=({data, filters, sorts, boardname})=>{
         if (bigindex >= filteredArray.length) {
             setBigindex(-1);
         }
-
-    }, [bigindex]);
+    }, [bigindex, filteredArray.length]);
 
     return (
         <div className={"display-board " + boardname}>

@@ -253,6 +253,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
                 setFilters(removesearchfrom);
             }
         }
+        //eslint-disable-next-line
     }, [search]);
 
     //the search bar itself

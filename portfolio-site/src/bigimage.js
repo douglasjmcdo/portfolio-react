@@ -36,7 +36,7 @@ const BigImage=({info, setBig, index, bigindex, setBigindex})=>{
                     //right arrow key: go to next bigimage
                     nextBimg();
                 }
-                else if (event.keyCode == 27) {
+                else if (event.keyCode === 27) {
                     //esc button: close bigimg
                     closeBimg();
                 }
@@ -50,6 +50,7 @@ const BigImage=({info, setBig, index, bigindex, setBigindex})=>{
         else if (index !== bigindex) {
             goodbye();
         }
+        //eslint-disable-next-line
     }, [index, bigindex]);
 
     //DATA LOAD:

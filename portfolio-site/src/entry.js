@@ -50,6 +50,8 @@ const Entry=({data, index, bigindex, setBigindex})=>{
       }
 
       determineContent(data);
+
+      //eslint-disable-next-line
     }, [data, type]);
 
     //want to open the bigimage? set bigindex to match index
