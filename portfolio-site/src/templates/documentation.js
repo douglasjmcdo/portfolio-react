@@ -9,6 +9,7 @@ const Documentation = () => {
     const location = getCollectionName(useLocation().pathname);
     const [subpageinfo, setSubpageinfo] = useState("");
     const [templatearray, setTemplatearray] = useState([]);
+    const [loaded, setLoaded] = useState(false);
     //  const prevpage = useNavigate();
 
     function getCollectionName(path) {
@@ -67,11 +68,16 @@ const Documentation = () => {
 
 
             });
+            setLoaded(true);
         }
 
         //eslint-disable-next-line
     }, [subpageinfo])
 
+    useEffect(() => {
+        console.log(loaded)
+
+    }, [loaded])
 
     return( 
         <div id="documentation">
@@ -79,7 +85,8 @@ const Documentation = () => {
                 <h2>DOCUMENTATION: {subpageinfo?.title }</h2>
                 <h3>{subpageinfo?.caption}</h3>
             </div>
-           <div className="templatewrapper">{templatearray}</div>
+            <div hidden={loaded}>LOADING...</div>
+           <div hidden={!loaded} className="templatewrapper">{templatearray}</div>
         </div>
         )
 }
