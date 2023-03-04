@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const BigImage=({info, setBig, index, bigindex, setBigindex})=>{
     const [tags, setTags] = useState([]);
+    const [prevbindex, setPrevbindex] = useState([])
 
     
     //CLOSE BIGIMAGE
@@ -28,6 +29,15 @@ const BigImage=({info, setBig, index, bigindex, setBigindex})=>{
     useEffect(() => {
         //this image is currently open: start tracking for keytabs
         if (index === bigindex) {
+            if (info["type"] !== "individual") {
+                //we've reached a collection or documentation page: skip to next
+                console.log("skip over ", info["title"])
+                if (prevbindex - bigindex > 0) {
+                    prevBimg();
+                } else {
+                    nextBimg();
+                }
+            }
             function checkKey(event) {
                 if (event.keyCode === 37) {
                     //left arrow key: go to previous bigimage
@@ -50,6 +60,8 @@ const BigImage=({info, setBig, index, bigindex, setBigindex})=>{
         else if (index !== bigindex) {
             goodbye();
         }
+        //keep track of the previous bigindex so we can tell which way we're toggling
+        setPrevbindex(bigindex);
         //eslint-disable-next-line
     }, [index, bigindex]);
 
@@ -71,9 +83,7 @@ const BigImage=({info, setBig, index, bigindex, setBigindex})=>{
                 hashtext = "#" + info["medium"][y];
                 newtags.push(<Link className="hashlink" to={linkto} key={linkto}>{hashtext}</Link>);
             }
-            setTags(newtags);
         }
-    
         tagsCalculator();
     }, [info]);
 

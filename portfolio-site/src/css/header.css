@@ -1,3 +1,5 @@
+@import url('fonts.css');
+
 .headerbar {
     width: 100%;
     background-color: #c29eff;
@@ -11,6 +13,7 @@
     margin-right: auto;
     text-align: center;
     width: 16em;
+    font-family: sans-serif;
 }
 
 .filterbar {
@@ -19,6 +22,7 @@
     padding: 0px;
     margin-top: 8px;
     margin-bottom: 0px;
+    font-family: sans-serif;
 }
 
 .filterbutton {
@@ -33,5 +37,7 @@
     justify-content: space-between;
 
     padding: 4px;
+    font-family: sans-serif;
+
 
 }
