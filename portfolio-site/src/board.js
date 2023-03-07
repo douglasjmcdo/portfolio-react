@@ -82,6 +82,14 @@ const Board=({data, filters, sorts, boardname})=>{
                 return isMatch;
             }
 
+            if (filtervalue === "subpage") {
+                if (a[filterkey] !== "individual") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
             //all other filters:
             if (typeof(a[filterkey]) === "object") {
                 for (let i in a[filterkey]) {
@@ -177,23 +185,58 @@ const Board=({data, filters, sorts, boardname})=>{
 
         }
 
+        function compareTypes(a, b) {
+            //sort functions return false if a comes first, and true if b comes first
+            if (a == b) {
+                return 0;
+            }
+            else if (a != "individual") {
+                return false;
+            } else if (b != "individual") {
+                return true;
+            } else {
+                return 0;
+            }
+        }
+
         function tiebreakerSort(a, b, sortmethod) {
             //stringify so that arrays compare properly
             let av = stringifyObj(a[sortmethod]);
             let bv = stringifyObj(b[sortmethod]);
+            let datea = new Date(a["date"]);
+            let dateb = new Date(b["date"]);
 
             //date defaults to REVERSE chronological
             if (sortmethod === "date") {
-                return av < bv;
+                //if dates are tied, sort by type, then by title
+                if (datea.getTime() === dateb.getTime()) {
+                    console.log("DATES MATCH", a, b);
+                    if (a["type"] === b["type"]) {
+                        console.log("DATEMATCH TYPEMATCH NOW TITLE", a, b);
+                        return a["title"] > b["title"];
+                    } else {
+                        console.log("COMPARING:", a, b);
+                        return compareTypes(a["type"], b["type"]);
+                    }
+                }
+                if (a["title"] === "Sterling Character Design") {
+                    console.log(datea, dateb);
+                    console.log(datea.getTime() === dateb.getTime());
+
+                }
+                return datea.getTime() < dateb.getTime();
             }
             
             if (av === bv) {
-                // console.log("sort methods are tied: sort by date, then by title");
-                if (a["date"] === b["date"]) {
-                    return a["title"] > b["title"];
-
+                //sort methods are tied: sort by date, then by type, then by title
+                if (datea.getTime() === dateb.getTime()) {
+                    if (a["type"] === b["type"]) {
+                        return a["title"] > b["title"];
+                    } else {
+                        return compareTypes(a["type"], b["type"]);
+                    }
                 } else {
-                    return a["date"] < b["date"];
+                    return datea.getTime() < dateb.getTime();
                 }
             }
             return av > bv;

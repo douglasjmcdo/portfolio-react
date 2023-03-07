@@ -20,7 +20,7 @@ This app distinguishes between three different types of projects-- individual im
   id: unique integer value
   title: "Image Title" 
   url: "for collections and doc pages"
-  type: individual / sub-page-d / sub-page-c
+  type: individual / documentation / collection
   medium: [ digital / traditional, water color / 3d ]
   industry: [ ui / front-end / illustration, comics ]
   insubpage: [ 2d-studio, observational / null ]

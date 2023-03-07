@@ -15,7 +15,7 @@
                 "react-pf-ui"
             ],
             "onmainpage": true,
-            "date": 2023,
+            "date": "2023-02-15",
             "img": "../img/react-portfolio-ui/portfolio-ui-v11.png",
             "alt": "Three screens of UI mockups for this porfolio website",
             "caption": "First page of UI Initial Mockups. "
@@ -35,56 +35,16 @@
                 "react-pf-ui"
             ],
             "onmainpage": true,
-            "date": 1023,
+            "date": "2023-02-15",
             "img": "../img/react-portfolio-ui/portfolio-ui-v13.png",
             "alt": "Rough sketch of a userflow design of this portfolio website.",
             "caption": "Initial design of UI userflow. I wanted to keep the UX as streamlined and cohesive as possible."
         },
         {
-            "id": 3,
-            "title": "2D Studio #4",
-            "type": "individual",
-            "medium": [
-                "digital",
-                "2d"
-            ],
-            "industry": [
-                "illustration"
-            ],
-            "insubpage": [
-                "2d-studio"
-            ],
-            "onmainpage": true,
-            "date": 2017,
-            "img": "../img/2d-studio/2d4.png",
-            "alt": "A set of 6 black and white compositions, all using typography of the letters D and M.",
-            "caption": "An exploration into typography and compositions using my own initials."
-        },
-        {
-            "id": 4,
-            "title": "2D Studio #5",
-            "type": "individual",
-            "medium": [
-                "traditional",
-                "2d"
-            ],
-            "industry": [
-                "illustration"
-            ],
-            "insubpage": [
-                "2d-studio"
-            ],
-            "onmainpage": true,
-            "date": 2017,
-            "img": "../img/2d-studio/2d5.png",
-            "alt": "Two identical papercraft compositions made with different colors and flipped.",
-            "caption": "An exploration into the effects of color and direction."
-        },
-        {
             "id": 5,
             "title": "2D Studio",
             "url": "2d-studio",
-            "type": "sub-page-c",
+            "type": "collection",
             "medium": [
                 "traditional",
                 "2d"
@@ -95,7 +55,7 @@
             ],
             "insubpage": [],
             "onmainpage": true,
-            "date": 2017,
+            "date": "2017-05-01",
             "img": "./img/2d-studio/2d1.jpg",
             "alt": "Two lino prints of a skull and feather, printed on white and golden paper.",
             "caption": "Fall 2017 Collection"
@@ -104,7 +64,7 @@
             "id": 6,
             "title": "Color Code",
             "url": "color-code",
-            "type": "sub-page-d",
+            "type": "documentation",
             "medium": [
                 "html",
                 "react"
@@ -114,7 +74,7 @@
             ],
             "insubpage": [],
             "onmainpage": true,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "./img/color-code/rough_ui_v1p2.png",
             "template": [
                 [
@@ -207,7 +167,7 @@
                 "cc-persona-uiv1"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/cc1.png",
             "alt": "Persona for the color-code app, describing an independent web developer.",
             "caption": ""
@@ -226,7 +186,7 @@
                 "cc-persona-uiv1"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/cc2.png",
             "alt": "Key problem and intended solution that color code app provides.",
             "caption": ""
@@ -245,7 +205,7 @@
                 "cc-persona-uiv1"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/rough_ui_v1p1.png",
             "alt": "Initial UI designs for a mobile app, showing four screens with annotations",
             "caption": ""
@@ -264,7 +224,7 @@
                 "cc-persona-uiv1"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/rough_ui_v1p2.png",
             "alt": "Initial UI designs for a mobile app, showing one annotated screen and a flowchart between screens",
             "caption": ""
@@ -283,7 +243,7 @@
                 "cc-persona-uiv1"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/rough_ui_v1p3.png",
             "alt": "Initial UI designs for a website, showing one annotated screen and a flowchart between screens",
             "caption": ""
@@ -302,7 +262,7 @@
                 "cc-uiv2"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/rough_ui_v21_ano.png",
             "alt": "",
             "caption": ""
@@ -321,7 +281,7 @@
                 "cc-uiv2"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/rough_ui_v22_ano.png",
             "alt": "",
             "caption": ""
@@ -340,7 +300,7 @@
                 "cc-uiv2"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/rough_ui_v23_ano.png",
             "alt": "",
             "caption": ""
@@ -359,7 +319,7 @@
                 "cc-mvp1"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/mvp1 v1.png",
             "alt": "",
             "caption": ""
@@ -378,10 +338,1172 @@
                 "cc-mvp1"
             ],
             "onmainpage": false,
-            "date": 2021,
+            "date": "2021-12-15",
             "img": "../img/color-code/mvp1 v2.png",
             "alt": "",
             "caption": ""
+        },
+        {
+            "id": 17,
+            "title": "2D Studio Lino Print",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "2d-studio"
+            ],
+            "onmainpage": true,
+            "date": "2017-05-01",
+            "img": "../img/2023/graphic design/2d studio fall 2017/2d1.jpg",
+            "alt": "Two prints of the same design on white and gold paper. A close up of an animal skull and a feather with honeycomb patterning.",
+            "caption": "Lino cut compositions inspired by still life studies"
+        },
+        {
+            "id": 18,
+            "title": "2D Studio Typography Stamp",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "2d-studio"
+            ],
+            "onmainpage": true,
+            "date": "2017-05-01",
+            "img": "../img/2023/graphic design/2d studio fall 2017/2d2.jpg",
+            "alt": "A black question mark shaped stamp repeated, rotated and mirrored on white paper. The pattern of the marks makes a chain like pattern.",
+            "caption": "A typography inspired carved stamp exploring negative space"
+        },
+        {
+            "id": 19,
+            "title": "2D Studio Compositions",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [],
+            "insubpage": [
+                "2d-studio"
+            ],
+            "onmainpage": true,
+            "date": "2017-05-01",
+            "img": "../img/2023/graphic design/2d studio fall 2017/2d3.jpg",
+            "alt": "A three by three grid of nine black and white compositions. All demonstrate sinuous, flowing edges and sharp corners.",
+            "caption": "Explorations into shape and negative space. Permanent marker on paper."
+        },
+        {
+            "id": 20,
+            "title": "2D Studio Digital Typography",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "2d-studio"
+            ],
+            "onmainpage": true,
+            "date": "2017-05-01",
+            "img": "../img/2023/graphic design/2d studio fall 2017/2d4.png",
+            "alt": "A set of six black and white compositions, all using typography of the letters D and M in various scales and fonts.",
+            "caption": "Experiments in composition and typography using my own initials."
+        },
+        {
+            "id": 21,
+            "title": "2D Studio Papercraft",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "2d-studio"
+            ],
+            "onmainpage": true,
+            "date": "2017-05-01",
+            "img": "../img/2023/graphic design/2d studio fall 2017/2d5.png",
+            "alt": "Two versions of the same abstract splashy composition, rotated 180 degrees. One is in reds and pinks, while the other is in blues and greens.",
+            "caption": "Papercut exploration into color and direction"
+        },
+        {
+            "id": 22,
+            "title": "Kangaroo Krate",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [],
+            "insubpage": [
+                "animal-series"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal1.png",
+            "alt": "A graphic illustration of a kangaroo with a joey in reds and oranges. Text around the kangaroo reads \"Kangaroo Krate\"",
+            "caption": "One in a series of eight posters, done as volunteer work for a local organization"
+        },
+        {
+            "id": 23,
+            "title": "Sheep Shack",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [],
+            "insubpage": [
+                "animal-series"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal2.png",
+            "alt": "A graphic illustration of a sheep in yellows and golds. Text around the sheep reads \"Sheep Shack\"",
+            "caption": "One in a series of eight posters, done as volunteer work for a local organization"
+        },
+        {
+            "id": 24,
+            "title": "Lemur Lodge",
+            "type": "individual",
+            "medium": [],
+            "industry": [],
+            "insubpage": [],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal3.png",
+            "alt": "A graphic illustration of a lemur in yellows and blues. Text around the lemur reads \"Lemur Lodge\"",
+            "caption": "One in a series of eight posters, done as volunteer work for a local organization"
+        },
+        {
+            "id": 25,
+            "title": "Spider Fungeon",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [],
+            "insubpage": [
+                "animal-series"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal4.png",
+            "alt": "A graphic illustration of a spider in purples and greens. Text above the spider reads \"Fungeon\"",
+            "caption": "One in a series of eight posters, done as volunteer work for a local organization"
+        },
+        {
+            "id": 26,
+            "title": "Lizard Pit",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [],
+            "insubpage": [
+                "animal-series"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal5.png",
+            "alt": "A graphic illustration of a lizard in yellows and greens. Text around the lizard reads \"Lizard Pit\"",
+            "caption": "One in a series of eight posters, done as volunteer work for a local organization"
+        },
+        {
+            "id": 27,
+            "title": "Beetle Box",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [],
+            "insubpage": [
+                "animal-series"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal6.png",
+            "alt": "A graphic illustration of a beetle in blues and greens. Text around the beetle reads \"Beetle Box\"",
+            "caption": "One in a series of eight posters, done as volunteer work for a local organization"
+        },
+        {
+            "id": 28,
+            "title": "Critter Cave",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [],
+            "insubpage": [
+                "animal-series"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal7.png",
+            "alt": "A graphic illustration of a hedgehog in golds and purples. Text around the hedgehog reads \"Critter Cave\"",
+            "caption": "One in a series of eight posters, done as volunteer work for a local organization"
+        },
+        {
+            "id": 29,
+            "title": "Worm World",
+            "type": "individual",
+            "medium": [],
+            "industry": [],
+            "insubpage": [],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal8.png",
+            "alt": "A graphic illustration of a worm in pinks and yellows Text around the worm reads \"Worm World\"",
+            "caption": "One in a series of eight posters, done as volunteer work for a local organization"
+        },
+        {
+            "id": 30,
+            "title": "O. Curr Business Card \u2013 Back",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2020-05-27",
+            "img": "../img/2023/graphic design/typography + logo/20-05-27 ocurr_Business Card \u2013 Back.png",
+            "alt": "The back of a business card in greens and purples, advertising for \"Disaster at Large\".",
+            "caption": "Fictional business card design"
+        },
+        {
+            "id": 31,
+            "title": "O. Curr Business Card - Front",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2020-05-27",
+            "img": "../img/2023/graphic design/typography + logo/20-05-27 ocurr_Business Card \u2013 Front.png",
+            "alt": "The front of a business card in greens and purples, advertising for Odious Curr.",
+            "caption": "Fictional business card design"
+        },
+        {
+            "id": 32,
+            "title": "Typography - Repression",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2020-02-27",
+            "img": "../img/2023/graphic design/typography + logo/djmcdo_words_FINAL_Page_1.png",
+            "alt": "A white poster. The word \"REPRESSION\" is barely legible due to a thick white band cutting across the center of the word",
+            "caption": "Typographic poster design"
+        },
+        {
+            "id": 33,
+            "title": "Typography - Transition",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2020-02-27",
+            "img": "../img/2023/graphic design/typography + logo/djmcdo_words_FINAL_Page_4.png",
+            "alt": "A purple poster. The word \"transition\" is displayed vertically, starting out in thin lowercase italics but with each letter changing slightly from the last, until the final letter is in heavy capitalized bold.",
+            "caption": "Typographic poster design"
+        },
+        {
+            "id": 34,
+            "title": "Bantjes Paper Hearts",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "bantjes"
+            ],
+            "onmainpage": false,
+            "date": "2020-03-31",
+            "img": "../img/2023/graphic design/typography + logo/finished-poster-and-merch-02.png",
+            "alt": "Four graphic patterns on long oval bands. Each are a repeating shape in vibrant colors of blues, yellows, pinks and oranges.",
+            "caption": "Printouts for weaving paper hearts, inspired by the work of Marian Bantjes"
+        },
+        {
+            "id": 35,
+            "title": "Bantjes Paper Hearts 2",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "bantjes"
+            ],
+            "onmainpage": false,
+            "date": "2020-03-31",
+            "img": "../img/2023/graphic design/typography + logo/finished-poster-and-merch-03.png",
+            "alt": "Four graphic patterns on long oval bands. Each are a repeating shape in vibrant colors of blues, yellows, pinks and oranges.",
+            "caption": "Printouts for weaving paper hearts, inspired by the work of Marian Bantjes"
+        },
+        {
+            "id": 36,
+            "title": "Marian Bantjes Paper Hearts 3",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "bantjes"
+            ],
+            "onmainpage": false,
+            "date": "2020-03-31",
+            "img": "../img/2023/graphic design/typography + logo/finished-poster-and-merch-04.png",
+            "alt": "Three hearts, each made from an interwoven combination of two designs. All are vibrant in bright pinks, oranges, yellows and blues. ",
+            "caption": "Examples of woven paper hearts, inspired by the work of Marian Bantjes"
+        },
+        {
+            "id": 37,
+            "title": "LBQ Draft 1",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "lbqset"
+            ],
+            "onmainpage": false,
+            "date": "2021-04-30",
+            "img": "../img/2023/graphic design/typography + logo/LBQ_sketch01.png",
+            "alt": "A reference page for a header and logo combination, featuring lime and quince blossoms in pale yellows and pinks. ",
+            "caption": "One of three design sketches for a header and logo commission"
+        },
+        {
+            "id": 38,
+            "title": "LBQ Draft 2",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "lbqset"
+            ],
+            "onmainpage": false,
+            "date": "2021-04-30",
+            "img": "../img/2023/graphic design/typography + logo/LBQ_sketch02.png",
+            "alt": "A reference page for a header and logo combination, featuring bold lime and quince blossoms in deep maroons and pale blues. ",
+            "caption": "One of three design sketches for a header and logo commission"
+        },
+        {
+            "id": 39,
+            "title": "LBQ Draft 3",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "lbqset"
+            ],
+            "onmainpage": false,
+            "date": "2021-04-30",
+            "img": "../img/2023/graphic design/typography + logo/LBQ_sketch03.png",
+            "alt": "A reference page for a header and logo combination, featuring soft lime and quince blossoms in pale yellows, pinks, and maroon. ",
+            "caption": "One of three design sketches for a header and logo commission"
+        },
+        {
+            "id": 40,
+            "title": "Ligature 1",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "ligset"
+            ],
+            "onmainpage": false,
+            "date": "2020-04-30",
+            "img": "../img/2023/graphic design/typography + logo/ligature_finals-01.png",
+            "alt": "A ligature in a bold, curved font. The middle leg of the M becomes the tail of the J, and the D curves through the center.",
+            "caption": "One of five ligatures made with the initials DJM"
+        },
+        {
+            "id": 41,
+            "title": "Ligature 2",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "ligset"
+            ],
+            "onmainpage": false,
+            "date": "2020-04-30",
+            "img": "../img/2023/graphic design/typography + logo/ligature_finals-02.png",
+            "alt": "A ligature in a blocky, scifi font. The right edge of the D becomes the first leg of the M, and the middle leg of the M becomes the tail of the J.",
+            "caption": "One of five ligatures made with the initials DJM"
+        },
+        {
+            "id": 42,
+            "title": "Ligature 3",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "ligset"
+            ],
+            "onmainpage": false,
+            "date": "2020-04-30",
+            "img": "../img/2023/graphic design/typography + logo/ligature_finals-03.png",
+            "alt": "A ligature in a bold serif font. The D and M are separated by the negative space carving out a J between them.",
+            "caption": "One of five ligatures made with the initials DJM"
+        },
+        {
+            "id": 43,
+            "title": "Ligature 4",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo",
+                "ligset"
+            ],
+            "onmainpage": false,
+            "date": "2020-04-30",
+            "img": "../img/2023/graphic design/typography + logo/ligature_finals-04.png",
+            "alt": "A ligature in an angular blackletter font. The D and J link together to make the base for the M",
+            "caption": "One of five ligatures made with the initials DJM"
+        },
+        {
+            "id": 44,
+            "title": "Personal Logo",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2020-04-30",
+            "img": "../img/2023/graphic design/typography + logo/logo_big.png",
+            "alt": "A logo reading \"DJMcDo\" in overlapping purple and yellow letters with bold black outline. The colors are transluscent, blending where they overlap.",
+            "caption": "A logo designed for personal use"
+        },
+        {
+            "id": 45,
+            "title": "No Lime",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2020-06-01",
+            "img": "../img/2023/graphic design/typography + logo/nolime_logo.png",
+            "alt": "Three bar-themed designs of the phrase \"No Lime\", all in stencil style.",
+            "caption": "Three versions of a design for a boat stencil"
+        },
+        {
+            "id": 46,
+            "title": "Goudy Poster",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2020-03-18",
+            "img": "../img/2023/graphic design/typography + logo/PrintDraft_FINAL_Page_2.png",
+            "alt": "A poster in blues and browns, showcasing the letterset for Goudy Old Style and providing a brief biographical blurb about Goudy himself.",
+            "caption": "A informational poster about the font Goudy Old Style and its creator Frederic Goudy"
+        },
+        {
+            "id": 47,
+            "title": "Rooster Print",
+            "type": "individual",
+            "medium": [
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling"
+            ],
+            "onmainpage": true,
+            "date": "2018-08-31",
+            "img": "../img/2023/hidden categories/3d/chicken.jpg",
+            "alt": "A photo of a bright green polygonal plastic rooster  standing on a table.",
+            "caption": "A print of a 3D model of a chicken designed in Blender."
+        },
+        {
+            "id": 48,
+            "title": "Jester Mask",
+            "type": "individual",
+            "medium": [
+                "traditional",
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling"
+            ],
+            "onmainpage": true,
+            "date": "2016-01-01",
+            "img": "../img/2023/hidden categories/3d/MASK COLLAGE_edited.jpg",
+            "alt": "Three photos of a white mask with large tilted ears, black circles on each cheek, and a wide pointy smile. The largest picture shows the mask alone on a black background, while two smaller photoes show the mask on a model, both head on and in profile.",
+            "caption": "A paper mache jester mask, inspired by the work of Mortis Ghost"
+        },
+        {
+            "id": 49,
+            "title": "Penguin 1",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling",
+                "3d-penguin"
+            ],
+            "onmainpage": false,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/penguin1.jpg",
+            "alt": "A 3d render of a metallic penguin in a cowboy hat",
+            "caption": "3D modelling practice"
+        },
+        {
+            "id": 50,
+            "title": "Penguin 2",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling",
+                "3d-penguin"
+            ],
+            "onmainpage": false,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/penguin2.jpg",
+            "alt": "A 3d render of a metallic penguin in a cowboy hat, in profile",
+            "caption": "3D modelling practice"
+        },
+        {
+            "id": 51,
+            "title": "Penguin 3",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling",
+                "3d-penguin"
+            ],
+            "onmainpage": false,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/penguin3.jpg",
+            "alt": "A 3d render of a metallic penguin from above, with a cowboy hat next to him",
+            "caption": "3D modelling practice"
+        },
+        {
+            "id": 52,
+            "title": "Pot 1",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling",
+                "3d-teapot"
+            ],
+            "onmainpage": false,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/pot1.jpg",
+            "alt": "A 3d render of a shiny purple teapot",
+            "caption": "3D modelling practice"
+        },
+        {
+            "id": 53,
+            "title": "Pot 2",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling",
+                "3d-teapot"
+            ],
+            "onmainpage": false,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/pot2.jpg",
+            "alt": "A 3d render of a shiny purple teapot. The lid is resting against the side of the pot.",
+            "caption": "3D modelling practice"
+        },
+        {
+            "id": 54,
+            "title": "Pot 3",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling",
+                "3d-teapot"
+            ],
+            "onmainpage": false,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/pot3.jpg",
+            "alt": "A 3d render of a shiny purple teapot, at a dramatic low angle. The lid is resting against the side of the pot.",
+            "caption": "3D modelling practice"
+        },
+        {
+            "id": 55,
+            "title": "Perfect Page 1",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "perfect"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/hidden categories/perfect/perfect001.png",
+            "alt": "A comic page showing a young teen reading on their laptop late at night. Text reads, \"When I was younger, I read a lot of romance stories.\"",
+            "caption": "A comic about romance tropes, hopes, and experiences."
+        },
+        {
+            "id": 56,
+            "title": "Perfect Page 2",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "perfect"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/hidden categories/perfect/perfect002.png",
+            "alt": "Panels of kisses and hands, overlaid with electricity. \"In some of he stories, the first kiss was electric, and the emotions felt like fire, and it was perfect. I knew life wasn't like that, of course, but it was a nice thought. I have felt electricity, I have felt fire. They reach deep into your bones and tug on the deepest parts of your nerves. They leave you bursting and heated. It would be nice.\"",
+            "caption": "A comic about romance tropes, hopes, and experiences."
+        },
+        {
+            "id": 57,
+            "title": "Perfect Page 3",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "perfect"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/hidden categories/perfect/perfect003.png",
+            "alt": "Panels showing nervous sweaty kisses, the boy carried by the wind and falling into a bed of leaves. \"In some of the stories, the first kisses were awkward. Noses poked and elbows got in the way and it was described as \"fumbling\" and \"messy\" and \"nervous\". But they felt so strongly for each other that it was perfect anyways. This seemed closer to reality. The kind of built up suspense that heightens everything to perfection, like the first time you manage to pull the wind around you and lift yourself into the air (even if you do fall down all three inches and land on your ass).\"",
+            "caption": "A comic about romance tropes, hopes, and experiences."
+        },
+        {
+            "id": 58,
+            "title": "Perfect Page 4",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "perfect"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/hidden categories/perfect/perfect004.png",
+            "alt": "Panels show a blushing face, holding hands. \"In some of the stories, it wasn't perfect. But it was still what they had been reaching, longing, hoping for, and with a little time and work and experimentation it would become perfect. So I was expecting the first kisses to be awkward, for our noses to smush uncomfortably; for our hands to slip and fumble against each other's faces, for our elbows to accidentally find each other's sides. What I didn't expect was to feel\", a panel of the boy, older, blank faced, \"nothing at all.\"",
+            "caption": "A comic about romance tropes, hopes, and experiences."
+        },
+        {
+            "id": 59,
+            "title": "Perfect Page 5",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "perfect"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/hidden categories/perfect/perfect005.png",
+            "alt": "\"The kisses were not electric, but I knew we would learn. I learned how to tilt my head. I learned how to use my mouth.\" Panels of the boy kissing his partner, emotionless. \"Nothing changed. The kisses remained exactly what they were: aforeign slide of soft skin against my own. Not particularly interesting.\" A panel of the boy hugging his partner, looking solemn. His partner watches him, concerned and flushed. \"Not particularly perfect. (I like hugs better.)\"",
+            "caption": "A comic about romance tropes, hopes, and experiences."
+        },
+        {
+            "id": 60,
+            "title": "Perfect Page 6",
+            "type": "individual",
+            "medium": [
+                "2d",
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "perfect"
+            ],
+            "onmainpage": false,
+            "date": "2017-08-31",
+            "img": "../img/2023/hidden categories/perfect/perfect006.png",
+            "alt": "A panel of the boy reaching out again. \"I enjoy making the people I care about feel good.\" A panel of the boy once again reading on his laptop. \"I just wish it worked for me.\" A panel of the mouse hovering over the close button.",
+            "caption": "A comic about romance tropes, hopes, and experiences."
+        },
+        {
+            "id": 61,
+            "title": "3D Modelling",
+            "url": "3d-modelling",
+            "type": "collection",
+            "medium": [
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [],
+            "onmainpage": true,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/MASK COLLAGE_edited.jpg",
+            "alt": "Three photos of a white mask with large tilted ears, black circles on each cheek, and a wide pointy smile. The largest picture shows the mask alone on a black background, while two smaller photoes show the mask on a model, both head on and in profile.",
+            "caption": "Traditional and Digital Sculpture and Rendering"
+        },
+        {
+            "id": 62,
+            "title": "Perfect",
+            "url": "perfect",
+            "type": "collection",
+            "medium": [
+                "traditional"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [],
+            "onmainpage": true,
+            "date": "2017-08-31",
+            "img": "../img/2023/hidden categories/perfect/perfect001.png",
+            "alt": "A comic page showing a young teen reading on their laptop late at night. Text reads, \"When I was younger, I read a lot of romance stories.\"",
+            "caption": "A 6-page comic about romance tropes, hopes, and experiences"
+        },
+        {
+            "id": 63,
+            "title": "Animal Rooms",
+            "url": "animal-series",
+            "type": "collection",
+            "medium": [
+                "digital"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [],
+            "onmainpage": true,
+            "date": "2017-08-31",
+            "img": "../img/2023/graphic design/animal posters/animal6.png",
+            "alt": "A graphic illustration of a beetle in blues and greens. Text around the beetle reads \"Beetle Box\"",
+            "caption": "Poster Series"
+        },
+        {
+            "id": 64,
+            "title": "Typography and Logo Design",
+            "url": "typo-logo",
+            "type": "collection",
+            "medium": [
+                "digital",
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [],
+            "onmainpage": true,
+            "date": "2021-04-30",
+            "img": "../img/2023/graphic design/typography + logo/LBQ_sketch02.png",
+            "alt": "A reference page for a header and logo combination, featuring bold lime and quince blossoms in deep maroons and pale blues. ",
+            "caption": "Assorted logos, posters, and ligatures"
+        },
+        {
+            "id": 86,
+            "title": "Hind Legs Print 1",
+            "type": "individual",
+            "medium": [
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": ["3d-modelling", "3d-legs"],
+            "onmainpage": false,
+            "date": "2020-03-31",
+            "img": "../img/2023/hidden categories/3d/rhinodoc/rhino documentation_Page_12_Image_0001.png",
+            "alt": "A photo of a pair of digitigrade hind legs hinged at the ankle, knee, and hip.",
+            "caption": "Final print of 3d modelled balljoint legs"
+        },
+        {
+            "id": 87,
+            "title": "Hind Legs Print 2",
+            "type": "individual",
+            "medium": [
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": ["3d-modelling", "3d-legs"],
+            "onmainpage": false,
+            "date": "2020-03-31",
+            "img": "../img/2023/hidden categories/3d/rhinodoc/rhino documentation_Page_13_Image_0001.png",
+            "alt": "A photo of a pair of digitigrade hind legs hinged at the ankle, knee, and hip.",
+            "caption": "Final print of 3d modelled balljoint legs"
+        },
+        {
+            "id": 88,
+            "title": "Hind Legs Print 3",
+            "type": "individual",
+            "medium": [
+                "3d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": ["3d-modelling", "3d-legs"],
+            "onmainpage": false,
+            "date": "2020-03-31",
+            "img": "../img/2023/hidden categories/3d/rhinodoc/rhino documentation_Page_14_Image_0001.png",
+            "alt": "A photo of a pair of digitigrade hind legs hinged at the ankle, knee, and hip.",
+            "caption": "Final print of 3d modelled balljoint legs"
+        },
+        {
+            "id": 91,
+            "title": "Damien Tiamat Character Sheet",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "chardesign"
+            ],
+            "onmainpage": true,
+            "date": "2017-05-31",
+            "img": "../img/2023/illustration/chardesign/14fd257e-325b-456a-b0e0-4b670d399cc0_rw_1920.png",
+            "alt": "Portrait turnaround and fullbody outfits for a young man with large fin ears and floppy hair. Outfits include a waistcoat and slacks over a buttonup shirt and a loosely draped toga. ",
+            "caption": "Comic concept character designs"
+        },
+        {
+            "id": 92,
+            "title": "Sterling Character Design",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "chardesign"
+            ],
+            "onmainpage": true,
+            "date": "2020-11-12",
+            "img": "../img/2023/illustration/chardesign/20-07-23 bb first 3.png",
+            "alt": "Three line drawings of the same character with a sharp face and rough bowlcut. The first outfit is a fitted tunic with a thick belt and embroidery. The second outfit is a loose tunic with one arm in a sling. The third outfit is an intricate robe and stola with heavy beaded fringes and headpiece.",
+            "caption": "Comic concept character designs for a fantasy comic set in Byzantine Constantinople"
+        },
+        {
+            "id": 93,
+            "title": "The Captain Character Design",
+            "type": "individual",
+            "medium": [
+                "digital",
+                "firealpaca"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "chardesign"
+            ],
+            "onmainpage": true,
+            "date": "2020-11-12",
+            "img": "../img/2023/illustration/chardesign/20-11-11 back on my headshot bullshit.png",
+            "alt": "Two headshots of a woman, one in profile and one head on. She has a strong jaw, a broad smile with sharp teeth, and heavy brows. Her long hair is pulled back into several braids and she is wearing a cloak with an asymmetrical fur collar.",
+            "caption": "Comic concept character designs for a fantasy comic set in Byzantine Constantinople"
+        },
+        {
+            "id": 94,
+            "title": "Naimbir Ch1 Character Designs",
+            "type": "individual",
+            "medium": [
+                "digital"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [
+                "chardesign"
+            ],
+            "onmainpage": true,
+            "date": "2020-11-12",
+            "img": "../img/2023/illustration/chardesign/21-01-27 ch1 chardesigns.png",
+            "alt": "A character lineup in shades of gold. From left to right: a tired looking person with a fitted tunic and a thick belt and many pieces of jewelry; a small lizard like monster; the same tired person, this time without jewelry and in a dirty shift with one arm in a sling; a rabbit-like creature, and a tall woman with a wolf skull for a head in full robes and a large scarf",
+            "caption": "Comic concept character designs for the first chapter of a fantasy comic set in Byzantine Constantinople"
+        },
+        {
+            "id": 95,
+            "title": "Paper Hearts",
+            "url": "bantjes",
+            "type": "collection",
+            "medium": [
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": false,
+            "date": "2020-03-31",
+            "img": "../img/2023/graphic design/typography + logo/finished-poster-and-merch-04.png",
+            "alt": "Three hearts, each made from an interwoven combination of two designs. All are vibrant in bright pinks, oranges, yellows and blues. ",
+            "caption": "Printouts for Craft Hearts"
+        },
+        {
+            "id": 96,
+            "title": "LB&Q",
+            "url": "lbqset",
+            "type": "collection",
+            "medium": [
+                "digital"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2021-04-30",
+            "img": "../img/2023/graphic design/typography + logo/LBQ_sketch01.png",
+            "alt": "A reference page for a header and logo combination, featuring lime and quince blossoms in pale yellows and pinks. ",
+            "caption": "Header and Logo Designs"
+        },
+        {
+            "id": 97,
+            "title": "Ligature Set",
+            "url": "ligset",
+            "type": "collection",
+            "medium": [
+                "2d"
+            ],
+            "industry": [
+                "design"
+            ],
+            "insubpage": [
+                "typo-logo"
+            ],
+            "onmainpage": true,
+            "date": "2020-04-30",
+            "img": "../img/2023/graphic design/typography + logo/ligature_finals-03.png",
+            "alt": "A ligature in a bold serif font. The D and M are separated by the negative space carving out a J between them.",
+            "caption": "DJM Ligatures"
+        },
+        {
+            "id": 98,
+            "title": "3D Penguin",
+            "url": "3d-penguin",
+            "type": "collection",
+            "medium": [
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling"
+            ],
+            "onmainpage": true,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/penguin3.jpg",
+            "alt": "A 3d render of a metallic penguin from above, with a cowboy hat next to him",
+            "caption": "Modelled and Rendered in Rhino"
+        },
+        {
+            "id": 99,
+            "title": "3D Teapot",
+            "url": "3d-teapot",
+            "type": "collection",
+            "medium": [
+                "3d"
+            ],
+            "industry": [],
+            "insubpage": [
+                "3d-modelling"
+            ],
+            "onmainpage": true,
+            "date": "2020-02-27",
+            "img": "../img/2023/hidden categories/3d/pot3.jpg",
+            "alt": "A 3d render of a shiny purple teapot, at a dramatic low angle. The lid is resting against the side of the pot.",
+            "caption": "Modelled and Rendered in Rhino"
+        },
+        {
+            "id": 100,
+            "title": "Character Design",
+            "url": "chardesign",
+            "type": "collection",
+            "medium": [
+                "digital"
+            ],
+            "industry": [
+                "illustration"
+            ],
+            "insubpage": [],
+            "onmainpage": true,
+            "date": "2020-11-12",
+            "img": "../img/2023/illustration/chardesign/21-01-27 ch1 chardesigns.png",
+            "alt": "A character lineup in shades of gold. From left to right: a tired looking person with a fitted tunic and a thick belt and many pieces of jewelry; a small lizard like monster; the same tired person, this time without jewelry and in a dirty shift with one arm in a sling; a rabbit-like creature, and a tall woman with a wolf skull for a head in full robes and a large scarf",
+            "caption": "Outfits, Turnarounds and Sketch Development"
         }
     ]
 }

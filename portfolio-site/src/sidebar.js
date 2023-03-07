@@ -7,6 +7,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
     const [checks, setChecks] = useState("");
     const [checkMValue, setCheckMValue] = useState({});
     const [checkIValue, setCheckIValue] = useState({});
+    const [checkSValue, setCheckSValue] = useState({ "collection": false, "documentation": false, "subpage": false});
     const [reset, setReset] = useState(false);
     const [search, setSearch] = useState("")
 
@@ -55,7 +56,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
     //current options are hardcoded into var sortbyoptions: industry, medium, date, title
     //if sorts updates, then make sure the radio dial rerenders
     useEffect(() => {
-        var sortbyoptions = ["industry", "medium", "date", "title"];
+        var sortbyoptions = ["industry", "medium", "date", "title", "type"];
 
         function handleRChange(changeEvent) {
             console.log(changeEvent.target.value);
@@ -111,6 +112,31 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
         if (newcval !== checkMValue) {
             setCheckMValue(newcval);
         }
+
+        //now do it again for the subpage filters
+        newcval = {};
+        if (filters && filters["type"]?.length > 0 && filters["type"].indexOf("collection") !== -1) {
+            newcval["collection"] = true;
+        } else {
+            newcval["collection"] = false;
+        }
+        if (filters && filters["type"]?.length > 0 && filters["type"].indexOf("documentation") !== -1) {
+            newcval["documentation"] = true;
+        } else {
+            newcval["documentation"] = false;
+        }
+        
+        if (filters && filters["type"]?.length > 0 && filters["type"].indexOf("subpage") !== -1) {
+            newcval["subpage"] = true;
+        } else {
+            newcval["subpage"] = false;
+        }
+
+        if (newcval !== checkSValue) {
+            setCheckSValue(newcval);
+        }
+
+
     //eslint-disable-next-line
     }, [industries, mediums, filters]);
 
@@ -168,8 +194,11 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
             //question 1: adding or removing? check the value arrays: we are inverting them
             if (isInd === "industry") {
                 doAddFilter = !checkIValue[changeEvent.target.name];
-            } else {
+            } else if (isInd === "medium") {
                 doAddFilter = !checkMValue[changeEvent.target.name];
+            } else {
+                console.log("isInd is ", isInd)
+                doAddFilter = !checkSValue[changeEvent.target.name];
             }
 
             if (!doAddFilter) {
@@ -181,6 +210,24 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
 
         function setNewChecks() {
             var newIndChecks = [];
+
+            newIndChecks.push(<div className="checkmarkheader topcheckmarkheader" key="typeh">SUB-PAGES:</div>);
+            Object.entries(checkSValue).forEach(([key, value]) => {
+                newIndChecks.push(
+                    <div className="form-check" key={key}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name={key}
+                            checked={value}
+                            onChange={(event) => handleFChange(event, "type")}
+                            className="form-check-input"
+                        />
+                        { key }
+                    </label>
+                </div>
+                );
+        });            
 
             newIndChecks.push(<div className="checkmarkheader" key="indh">INDUSTRIES:</div>);
             Object.entries(checkIValue).forEach(([key, value]) => {
@@ -223,7 +270,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
 
         setNewChecks();
         // eslint-disable-next-line        
-    }, [checkIValue, checkMValue]);
+    }, [checkIValue, checkMValue, checkSValue]);
 
     //SEARCH BAR
     //on searchbar enter key, set search
@@ -301,7 +348,9 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
         <div className={sidebarclass} ref={wrapperRef}>
             <div className="sidebar-contents">
                 <SearchBar className="searchbar" />
+                <div className="sectionheader">Sort by:</div>
                 <div className="sortselect">{radio}</div>
+                <div className="sectionheader">Filter by:</div>
                 <div className="filterselect">{checks}</div>
                 <button onClick={resetSearch}> Reset Search</button>
                 <button onClick={closeSidebar}>Close Sidebar</button>

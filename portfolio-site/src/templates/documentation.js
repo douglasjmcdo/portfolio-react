@@ -21,7 +21,7 @@ const Documentation = () => {
     useEffect(() => {
         function getThisCollectionInfo(all) {
             for (let x in all) {
-                if (all[x].type === "sub-page-d" && all[x]?.url === location) {
+                if (all[x].type === "documentation" && all[x]?.url === location) {
                     return all[x];
                 }
             }

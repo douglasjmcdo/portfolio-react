@@ -31,7 +31,18 @@
 
 }
 
+
 .checkmarkheader {
-    margin-top: 8px;
+    margin-top: 12px;
     margin-bottom: 3px;
+}
+
+
+.topcheckmarkheader {
+    margin-top: 3px;
+}
+
+.sectionheader {
+    margin: 5px;
+    margin-top: 8px;
 }

@@ -83,6 +83,7 @@ const BigImage=({info, setBig, index, bigindex, setBigindex})=>{
                 hashtext = "#" + info["medium"][y];
                 newtags.push(<Link className="hashlink" to={linkto} key={linkto}>{hashtext}</Link>);
             }
+            setTags(newtags);
         }
         tagsCalculator();
     }, [info]);

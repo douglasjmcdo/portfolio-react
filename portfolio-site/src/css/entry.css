@@ -29,6 +29,7 @@
 
 .ecaption {
     font-family: sans-serif;
+    font-size: 14px;
 }
 
 .centertext {
@@ -41,6 +42,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    max-width: 90%;
 }
 .eTitle.subpage {
     opacity: 100%;

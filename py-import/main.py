@@ -3,8 +3,14 @@
 #
 import json
 jsondata = ""
+ignoredata = ""
 with open('../portfolio-site/src/data.json', "r") as datafile:
     jsondata = json.load(datafile)
+
+with open('../portfolio-site/src/ignore.json', "r") as datafile:
+    ignoredata = json.load(datafile)
+
+print(ignoredata)
 
 #
 # READ ALL FILE NAMES IN IMG INTO THE LIST filearray
@@ -38,6 +44,8 @@ minindex = 0
 mediumarray = {}
 industryarray = {}
 insubpagearray = {}
+currentsubpages = []
+missingsubpages = []
 
 for entry in jsondata['entries']:
 
@@ -56,22 +64,39 @@ for entry in jsondata['entries']:
 
         #compile all current mediums in mediumarray
         for x in entry["medium"]:
-            if x not in mediumarray:
+            if x not in mediumarray and x not in ignoredata["img"]:
                 print(x)
                 mediumarray[x] = 0
         
         for y in entry["industry"]:
-            if y not in industryarray:
+            if y not in industryarray and y not in ignoredata["img"]:
                 industryarray[y] = 0
 
         for z in entry["insubpage"]:
-            if z not in insubpagearray:
+            if z not in insubpagearray and z not in ignoredata["img"]:
                 insubpagearray[z] = 0
 
     else:
-        print("NOT AN INDIVIDUAL ENTRY. MAYBE CHECK FOR A HEADER BUT OTHERWISE LEAVE HER ALONE")
+        if entry["type"] == "collection":
+            print("IT'S A COLLECTION. NOTE ITS URL")
+            currentsubpages.append(entry["url"])
+        else:
+            print("ENTRY IS A DOC PAGE. NOTE ANY BOARDS NAMED IN ITS TEMPLATE")
+            for e in entry["template"]:
+                if e[0] == "board":
+                    print(e)
+                    currentsubpages.append(e[1])
 
 print("FILE ARRAY SHOULD NOW ONLY CONTAIN IMAGES THAT ARE NOT INCLUDED IN JSON.")
+
+for entry in insubpagearray.keys():
+    if entry not in currentsubpages and entry not in ignoredata["subpage"]:
+        missingsubpages.append(entry)
+
+
+
+print("EXISTING SUBBOARDS:", currentsubpages)
+print("MISSING SUBBOARDS:", missingsubpages)
 
 #
 #GUI SETUP
@@ -100,7 +125,8 @@ jsontest = Label(root,
                 background="yellowgreen", wraplength=300)
 jsontest.grid(column=1, columnspan=2, row=1)
 
-filetest = Label(root, text="unprocessed file list: " + str(len(filearray)),
+filetest = Label(root, text="unprocessed file list: " + str(len(filearray)) + "\
+                 missing subpage list: " + str(len(missingsubpages)),
             background="orange")
 filetest.grid(column=1, columnspan=2, row=2)
 
@@ -123,8 +149,7 @@ def showclick():
         showimg.configure(image="")
         showbtn.configure(text="back to start?", command=resetclick)
         theform.grid_forget()
-
-
+        resetbtn.grid_forget()
         return
 
     currentimg += 1
@@ -134,6 +159,10 @@ def showclick():
         showimg.configure(text="now showing image", width=300, height=300, padx=5, pady=5)
         # showimg.grid(column=0, columnspan=3)
         showbtn.configure(text="skip this image")
+        exitbtn.grid(column=1, row=3)
+        resetbtn.configure(command=resetclick, text="return to 1st unprocessed img")
+        resetbtn.grid(column=3, row=3)
+        subpagebtn.grid_forget()
         theform.grid(column=0, row=4, columnspan=3)
 
     print("in showclick for img ", currentimg)
@@ -193,10 +222,13 @@ class Fentry(Frame):
         return self.entry.get()
 
     def updatetitle(self):
-        global minindex
         self.entry.delete(0, END)
         newtitle = filearray[currentimg].split("/").pop().split(".")[0]
         self.entry.insert(0, newtitle)
+
+    def updatesubtitle(self):
+        self.entry.delete(0, END)
+        self.entry.insert(0, missingsubpages[currentimg])
     
     def updatelabel(self):
         self.entry.delete(0, END)
@@ -222,7 +254,17 @@ class Checkset(Frame):
         #make list of checkboxes based on passed in set and grid them in rows of 4
         for idx, item in enumerate(self.tf):
             self.tf[item] = BooleanVar()
-            x = Checkbutton(self, text=item, variable=self.tf[item])
+            if item.find(".") != -1:
+                imgpath = "../portfolio-site/public" + item[2:]
+                newimg = Image.open(imgpath)
+                newimg = newimg.convert("RGB")
+                while (newimg.width > 80 or newimg.height > 80):
+                    newimg = newimg.resize((newimg.width // 2, newimg.height // 2))
+                newimg = ImageTk.PhotoImage(newimg)
+                x = Checkbutton(self, image=newimg, variable=self.tf[item])
+                x.image = newimg
+            else:
+                x = Checkbutton(self, text=item, variable=self.tf[item])
             letrow = ((idx) // 4) 
             letcol = ((idx) % 4) + 1
             x.grid(row=letrow, column=letcol, sticky="w")
@@ -248,6 +290,12 @@ class Checkset(Frame):
                 letcol = ((len(self.tf) - 1) % 4) + 1
                 x.grid(row=letrow, column=letcol, sticky="w")
 
+        return retlist
+    
+    def getnames(self):
+        retlist = []
+        for item in self.tf:
+            retlist.append(item)
         return retlist
 
     #clears all checkboxes and the fentry
@@ -294,16 +342,20 @@ class TheForm(Frame):
         self.submitButton = Button(self, text="Submit and Next Image", command=self.submit)
         self.submitButton.grid(row=9, column=0, sticky="e")
 
-        self.skipButton = Button(self, text="Clear form", command=self.clear, fg="red")
-        self.skipButton.grid(row=9, column=0, sticky="w")
+        self.clearButton = Button(self, text="Clear form", command=self.clear, fg="red")
+        self.clearButton.grid(row=9, column=0, sticky="w")
 
+        self.ignoreButton = Button(self, text="Ignore Image", command=self.ignore, fg="red")
+        self.ignoreButton.grid(row=9, column=0, sticky="n")
+
+
+        #are these necessary?
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(2, weight=1)
 
     #on clicking submit, append new data to the json and move on
     def submit(self):
         #SAFETY CHECK: must be on a valid entry in filearray
-        global currentimg
         if currentimg < 0:
             print("NO IMAGE VIEWED YET")
             return
@@ -312,8 +364,6 @@ class TheForm(Frame):
             return
 
         #gather all the relevant variables for json dump
-        global minindex
-
         title = self.etitle.get()
         caption = self.ecaption.get()
         alt = self.ealt.get()
@@ -351,16 +401,9 @@ class TheForm(Frame):
             ogdata["entries"].append(newsubmit)
             datafile.seek(0)
             json.dump(ogdata, datafile, indent=4)
+        
+        self.moveon()
             
-
-        #json has been submitted: now we remove relevant image from the list and move on
-        filearray.pop(currentimg)
-        currentimg -= 1 #to account for filearray shrinking
-        minindex += 1
-
-        #numbers have been updated: now update relevant displays
-        filetest.configure(text="unprocessed file list: " + str(len(filearray)))
-        showclick()
 
     #clear form fields
     def clear(self):
@@ -372,14 +415,252 @@ class TheForm(Frame):
         self.ecaption.clearcaption()
         self.ealt.clearalt()
 
+    #mark the current img on ignorelist and move on
+    def ignore(self):
+        global ignoredata
+        ignoredata["img"].append(filearray[currentimg])
+        
+        with open('../portfolio-site/src/ignore.json', "r+") as datafile:
+            datafile.seek(0)
+            json.dump(ignoredata, datafile, indent=4)
+
+        self.moveon()
+
+    def moveon(self):
+        #json has been submitted: now we remove relevant image from the list and move on
+        global currentimg
+        global minindex
+        filearray.pop(currentimg)
+        currentimg -= 1 #to account for filearray shrinking
+        minindex += 1
+
+        #numbers have been updated: now update relevant displays
+        filetest.configure(text="unprocessed file list: " + str(len(filearray)) + "\
+                 missing subpage list: " + str(len(missingsubpages)))
+        showclick()
+
+
+
+#
+# SUBPAGE STUFF
+#
+
+def subpagesclick():
+    global currentimg
+    #SAFETY CHECK: we've hit end of missing subpages
+    if currentimg >= len(missingsubpages) - 1:
+        print("END OF MISSINGSUBPAGES")
+        #TODO: clear any images/display
+        subpagebtn.configure(text="back to start?", command=resetsubpage)
+        subform.grid_forget()
+        return
+    
+    currentimg += 1
+
+    #starting display: configure buttons accordingly
+    if currentimg == 0:
+        showbtn.grid_forget()
+        subpagebtn.grid(column=0)
+        exitbtn.grid(column=1, row=3)
+        resetbtn.configure(command=resetsubpage, text="return to 1st missing subpage")
+        resetbtn.grid(column=3, row=3)
+        subpagebtn.configure(text="skip this subpage")
+        subform.grid(column=0, row=4, columnspan=3)
+
+    #further configuration goes here
+    print("in subpage for page ", missingsubpages[currentimg])
+    subform.eimg.grid_forget()
+    subform.populatedata()
+    #subform.configure(text="TEST: " + missingsubpages[currentimg])
+    subform.etitle.updatesubtitle()
+    
+def resetsubpage():
+    global currentimg
+    currentimg = -1
+    subpagebtn.configure(command=subpagesclick)
+    subpagesclick()
+
+#todo: SubForm
+from datetime import date as dt
+class SubForm(Frame):
+    def __init__(self, parent):
+        Frame.__init__(self, parent, padx=5, pady=5, bg="lightgreen")
+        print("NEW SUBFORM")
+        self.submediumarray = {}
+        self.subindustryarray = {}
+        self.subdate = dt.min
+        self.possibleimages = {}
+        self.eimg = Label(self, text="placeholder")
+        
+        self.etitle = Fentry(self, "Title:", missingsubpages[currentimg])
+        self.etitle.grid(row=1, column=0, sticky="w")
+
+        self.ecaption = Fentry(self, "caption:", "SUBHEADER")
+        self.ecaption.grid(row=2, column=0, sticky="w")
+
+        self.emedium = Checkset(self, self.submediumarray, "medium")
+        self.emedium.grid(row=3, column=0, sticky="ew")
+       
+        self.esubpage = Checkset(self, insubpagearray, "insubpage")
+        self.esubpage.grid(row=6, column=0)
+
+        self.omp = BooleanVar()
+        self.eomp = Checkbutton(self, text="onmainpage", variable=self.omp)
+        self.eomp.grid(row=7, column=0, sticky="w")
+
+        self.submitButton = Button(self, text="Submit and Next Subpage", command=self.submit)
+        self.submitButton.grid(row=9, column=0, sticky="e")
+        self.clearButton = Button(self, text="Clear form", command=self.clear, fg="red")
+        self.clearButton.grid(row=9, column=0, sticky="w")
+        self.ignoreButton = Button(self, text="Ignore Subpage", command=self.ignore, fg="red")
+        self.ignoreButton.grid(row=9, column=0, sticky="n")
+    
+    def populatedata(self):
+        #wipe all data
+        self.submediumarray = {}
+        self.subindustryarray = {}
+        self.subdate = dt.min
+        self.possibleimages = {}
+        self.possiblealts = {}
+
+        #FIND FEATURED ENTRIES AND COLLECT NEEDED INFO
+        for entry in jsondata["entries"]:
+            if missingsubpages[currentimg] in entry["insubpage"]:
+                #print(entry["title"] + " is featured in " + missingsubpages[currentimg])
+                self.possibleimages[entry["img"]] = 0
+                self.possiblealts[entry["img"]] = entry["alt"]
+                #make list of mediums listed in featured entries
+                for x in entry["medium"]:
+                    if x not in self.submediumarray:
+                        self.submediumarray[x] = 0
+
+                #make list of industries listed in featured entries
+                for y in entry["industry"]:
+                    if y not in self.subindustryarray:
+                        self.subindustryarray[y] = 0
+                
+                #get most recent date
+                if dt.fromisoformat(entry["date"]) > self.subdate:
+                    self.subdate = dt.fromisoformat(entry["date"])
+
+        self.emedium = Checkset(self, self.submediumarray, "medium")
+        self.emedium.grid(row=3, column=0, sticky="ew")
+         
+        self.eindustry = Checkset(self, self.subindustryarray, "industry")
+        self.eindustry.grid(row=4, column=0, sticky="ew")
+
+        self.eimg = Checkset(self, self.possibleimages, "image: check 1 only")
+        self.eimg.grid(row=5, column=0, sticky="ew")
+        #print(self.eimg.getnames())
+        
+    def submit(self):
+        if currentimg < 0:
+            print("NO SUBPAGE VIEWED YET")
+            return
+        elif currentimg > len(missingsubpages) - 1:
+            print("OUT OF BOUNDS")
+            return
+        
+        theimg = self.eimg.get()[0]
+        print(theimg)
+
+        #the json dump
+        newsubmit = {
+            "id": minindex,
+            "title": self.etitle.get(),
+            "url": missingsubpages[currentimg],
+            "type": "collection",
+            "medium": self.emedium.get(),
+            "industry": self.eindustry.get(),
+            "insubpage": self.esubpage.get(),
+            "onmainpage": self.omp.get(),
+            "date": self.subdate.isoformat(),
+            "img": self.eimg.get()[0],
+            "alt": self.possiblealts[theimg],
+            "caption": self.ecaption.get()
+        }
+        print(newsubmit)
+
+        self.esubpage.clear()
+        self.emedium.clear()
+        self.eindustry.clear()
+        self.eimg.clear()
+        self.eimg.grid_forget()
+
+        #TODO: thejson dump!
+        
+        with open('../portfolio-site/src/data.json', "r+") as datafile:
+            ogdata = json.load(datafile)
+            ogdata["entries"].append(newsubmit)
+            datafile.seek(0)
+            json.dump(ogdata, datafile, indent=4)
+
+        self.moveon()
+    
+    def moveon(self):
+        global currentimg
+        global minindex
+        missingsubpages.pop(currentimg)
+        currentimg -= 1
+        minindex += 1
+
+        filetest.configure(text="unprocessed file list: " + str(len(filearray)) + "\
+                 missing subpage list: " + str(len(missingsubpages)))
+        subpagesclick()
+
+    #mark the current img on ignorelist and move on
+    def ignore(self):
+        global ignoredata
+        ignoredata["subpage"].append(missingsubpages[currentimg])
+        
+        with open('../portfolio-site/src/ignore.json', "r+") as datafile:
+            datafile.seek(0)
+            json.dump(ignoredata, datafile, indent=4)
+
+        self.moveon()
+        
+
+    def clear(self):
+        self.emedium.clear()
+        self.eindustry.clear()
+        self.esubpage.clear()
+        self.etitle.updatetitle()
+        self.omp.set(False)
+        self.ecaption.clearcaption()
+        self.eimg.clear()
+
+
+
+#LEAVE ALL CLICKTHROUGHS NAD RETURN TO STARTING SCREEN
+def leave():
+    print("LEAVE")
+    global currentimg
+    currentimg = -1
+    subpagebtn.configure(text="show missing subpages", command=subpagesclick)
+    subpagebtn.grid(column=1, row=3)
+    showbtn.configure(text="show unprocessed image", command=showclick)
+    showbtn.grid(column=0, row=3)
+    resetbtn.grid_forget()
+    exitbtn.grid_forget()
+    theform.grid_forget()
+    subform.grid_forget()
+
+
 #
 # GUI: FORM AREA
 #
 showbtn = Button(root, width=25, text="show unprocessed image", fg="purple", command=showclick)
 showbtn.grid(column=0, row=3)
 
+subpagebtn = Button(root, width=25, text="show missing subpages", fg="purple", command=subpagesclick)
+subpagebtn.grid(column=1, row=3)
+
 resetbtn = Button(root, width=25, text="back to 1st unprocessed img", fg="blue", command=resetclick)
-resetbtn.grid(column=3, row=3)
+
+exitbtn = Button(root, width=25, text="RETURN TO HOME", fg="red", command=leave)
 
 theform = TheForm(root)
+subform = SubForm(root)
+
+
 root.mainloop()

@@ -26,7 +26,7 @@ const Entry=({data, index, bigindex, setBigindex})=>{
 
         else {
           var linkto = "/documentation/" + source["url"];
-          if (type === "sub-page-c") {
+          if (type === "collection") {
             linkto = "/collection/" + source["url"];
           }
           setEcontent(
@@ -52,7 +52,7 @@ const Entry=({data, index, bigindex, setBigindex})=>{
       determineContent(data);
 
       //eslint-disable-next-line
-    }, [data, type]);
+    }, [data, type, index]);
 
     //want to open the bigimage? set bigindex to match index
     function openEntry() {
