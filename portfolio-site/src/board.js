@@ -2,12 +2,13 @@ import React, {useState, useEffect } from 'react';
 import './css/board.css';
 import Entry from './entry.js';
 
-const Board=({data, filters, sorts, boardname})=>{
+const Board=({className, data, filters, sorts, boardname})=>{
     const [needSort, setNeedSort] = useState(false);
     const [needFilter, setNeedFilter] = useState(false);
     const [entryArray, setEntryArray] = useState([]); //BASE DATA
     const [filteredArray, setFilteredArray] = useState([]); //ENTRY ARRAY, FILTERED + SORTED
     const [bigindex, setBigindex] = useState(-1); //determines which bigindex is showing. -1 = none
+    const [boardClasses, setBoardClasses] = useState("display-board");
 
     //on data load or url change, populate entry array. 
     useEffect(() => {
@@ -15,6 +16,12 @@ const Board=({data, filters, sorts, boardname})=>{
             //reset entry array before repopulating
             console.log("POPULATE ENTRIES");
             setEntryArray([]);
+            //data is a single entry: presumably for documentation. just populate it
+            if (data && data.length <= 1) {
+                setEntryArray(entryArray => [...entryArray, data[0]]);
+                return;
+            }
+
             for (let x in data) {
                 //main board: check if exists on main page!
                 if (boardname === "main" && data[x].onmainpage === true) {
@@ -24,7 +31,6 @@ const Board=({data, filters, sorts, boardname})=>{
                 else if (boardname !== "main" && data[x].insubpage.length > 0) {
                     for (let sub in data[x].insubpage) {
                         if (data[x].insubpage[sub] === boardname) {
-                            console.log("DATA ", data[x].title, " IS INCLUDED IN SUBPAGE", boardname);
                             setEntryArray(entryArray => [...entryArray, data[x] ]);
                         }
                     }
@@ -35,6 +41,14 @@ const Board=({data, filters, sorts, boardname})=>{
         console.log("data or boardname have changed,", data?.length, boardname);
         populateEntryArray(boardname);
     }, [data, boardname]);
+
+    useEffect(() => {
+        if (className) {
+            setBoardClasses(className + " display-board " + boardname)
+        } else {
+            setBoardClasses("display-board " + boardname)
+        }
+    }, [className, boardname])
 
 
     //
@@ -210,19 +224,11 @@ const Board=({data, filters, sorts, boardname})=>{
             if (sortmethod === "date") {
                 //if dates are tied, sort by type, then by title
                 if (datea.getTime() === dateb.getTime()) {
-                    console.log("DATES MATCH", a, b);
                     if (a["type"] === b["type"]) {
-                        console.log("DATEMATCH TYPEMATCH NOW TITLE", a, b);
                         return a["title"] > b["title"];
                     } else {
-                        console.log("COMPARING:", a, b);
                         return compareTypes(a["type"], b["type"]);
                     }
-                }
-                if (a["title"] === "Sterling Character Design") {
-                    console.log(datea, dateb);
-                    console.log(datea.getTime() === dateb.getTime());
-
                 }
                 return datea.getTime() < dateb.getTime();
             }
@@ -280,9 +286,10 @@ const Board=({data, filters, sorts, boardname})=>{
     }, [bigindex, filteredArray.length]);
 
     return (
-        <div className={"display-board " + boardname}>
+        <div className={ boardClasses }>
           {/* <button onClick={testSort}>add + sort</button> */}
-          <div className="board-row">
+          <div className="loadingscreen" hidden={true}>LOADING...</div>
+          <div className="board-row" >
 
             { filteredArray.map((x, index) => (
                 <Entry data={x} index={index} key={x["title"]} bigindex={bigindex} setBigindex={setBigindex}/>

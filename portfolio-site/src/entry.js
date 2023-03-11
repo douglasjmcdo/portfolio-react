@@ -4,21 +4,22 @@ import { Link } from 'react-router-dom';
 import BigImage from './bigimage.js';
 
 const Entry=({data, index, bigindex, setBigindex})=>{
-    const [econtent, setEcontent] = useState(<div></div>);
+    const [econtent, setEcontent] = useState("");
     const type = data["type"];
     const [openBig, setOpenBig] = useState(false);
+    const [loaded, setLoaded] = useState(false);
     
     //initialize econtent
     useEffect(() => {
       function determineContent(source) {
         if (type === "individual") {
           setEcontent(
-            <div className="entry" onClick={openEntry} key={ source["id"] }>
-              <div className="eTitle">
+            <div className="entry" style={{display: loaded ? "block" : "none"}} onClick={openEntry} key={ source["id"] }>
+              <div className="eTitle indiv">
                 {data["title"]}
               </div>
               <div className="eContent">          
-                <img className="entryimg" src={source["img"]} alt={source["alt"]}></img>
+                <img className="entryimg" onLoad={() => setLoaded(true)} src={source["img"]} alt={source["alt"]}></img>
               </div>
             </div>
           );
@@ -31,17 +32,17 @@ const Entry=({data, index, bigindex, setBigindex})=>{
           }
           setEcontent(
             <Link to={linkto} key={ source["id"] }>
-              <div className="entry">
+              <div className="entry" style={{display: loaded ? "block" : "none"}}>
                 <div className="centertext">
                   <div className="eTitle subpage">
-                    {data["title"]}
+                    <span className="underline">{data["title"]}</span>
                   </div>
                   <div className="ecaption">
                     {data["caption"]}
                   </div>
                 </div>
                 <div className="eContent">          
-                  <img className="entryimg" src={source["img"]} alt={source["alt"]}></img>
+                  <img className="entryimg subpimg" onLoad={() => setLoaded(true)} src={source["img"]} alt={source["alt"]}/>
                 </div>
               </div>
             </Link>
@@ -52,7 +53,7 @@ const Entry=({data, index, bigindex, setBigindex})=>{
       determineContent(data);
 
       //eslint-disable-next-line
-    }, [data, type, index]);
+    }, [data, type, index, loaded]);
 
     //want to open the bigimage? set bigindex to match index
     function openEntry() {
@@ -67,11 +68,12 @@ const Entry=({data, index, bigindex, setBigindex})=>{
     }, [index, bigindex]);
 
     return (
-      <div className="contentandbig">{econtent}
-      <div hidden={!openBig}>
-        <BigImage info={data} setBig={setOpenBig} tabindex="0"
-                  index={index} bigindex={bigindex} setBigindex={setBigindex}/>
-      </div>
+      <div className="contentandbig"> 
+          <div>{econtent}</div>
+          <div hidden={!openBig}>
+            <BigImage info={data} setBig={setOpenBig} tabindex="0"
+                      index={index} bigindex={bigindex} setBigindex={setBigindex}/>
+          </div>
       </div>
 
     );

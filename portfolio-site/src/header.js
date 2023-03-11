@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './css/header.css';
 import Sidebar from './sidebar';
+//import '/../img/2023/graphic design/typography + logo/logo_vector.png';
 
 //todo: import filterbar options from data.json?
 const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
@@ -77,7 +78,7 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
 
     return (
         <div className="headerbar">
-            <Link to="/" className="headertext"><div>DOUGLAS MCDONALD</div></Link>
+            <Link to="/" className="headertext"><img className="imghlink" src="/../img/2023/graphic design/typography + logo/logo_vector.png"/></Link>
             <ul className="filterbar">
                 { industryArray }
             </ul>
@@ -98,7 +99,7 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
 const FilterButton=({value, index})=>{
     let linkto = "/?filter=industry-" + value;
     return (
-        <li key={ value } className="filterbutton"><Link to={ linkto }>{ value } </Link></li>
+        <li key={ value } className="filterbutton"><Link to={ linkto }>{ value.toUpperCase() } </Link></li>
     );
 }
 

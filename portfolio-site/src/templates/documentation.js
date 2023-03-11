@@ -1,7 +1,9 @@
 import { useOutletContext } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import Board from '../board.js';
+import Entry from '../entry.js';
 import {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import "../css/documentation.css"
 
 const Documentation = () => {
@@ -41,12 +43,38 @@ const Documentation = () => {
                     case "text":
                         nextdiv = (<div className="dtext" key={content}>{content}</div>)
                         break;
+                    case "link":
+                        console.log(content);
+                        let filler = "";
+                        if (content["text"]) {
+                            filler = content["text"];
+                        } else {
+                            filler = <img className="linkimg" key={content} src={content["image"]} alt={content["alt"]}/>
+                        }
+                        nextdiv = (<Link className="dlink" to={content["url"]} key={filler + content}>{filler}</Link>)
+                        break;
                     case "header":
                         nextdiv = (<h3 className="dheader" key={content}>{content}</h3>)
                         break;
                     case "board":
                         nextdiv = (<Board key={content} className="dboard" 
                             data={data["data"]} filters={data["filters"]} sorts={data["sorts"]} boardname={content} />)
+                        break;
+                    case "image":
+                        nextdiv = <img key={content} className="dimg" src={content["image"]} alt={content["alt"]}/>
+                        break;
+                    case "entry":
+                        //technically, this makes a board with 1 entry in it. lol
+                        let entryinfo = "";
+                        if (isNaN(content)) {
+                            entryinfo = data["data"].filter((e) => e["title"] === content);
+                        } else {
+                            entryinfo = data["data"].filter((e) => e["id"] === content);
+                        }
+                        console.log(entryinfo);
+                        nextdiv = (<Board key={content} className="dboard dentry"
+                                data={entryinfo} filters={data["filters"]} sorts={data["sorts"]} boardname={entryinfo["title"]} />)
+                        
                         break;
                     case "video":
                         let vidtype = content.split(".");
