@@ -10,8 +10,6 @@ with open('../portfolio-site/src/data.json', "r") as datafile:
 with open('../portfolio-site/src/ignore.json', "r") as datafile:
     ignoredata = json.load(datafile)
 
-print(ignoredata)
-
 #
 # READ ALL FILE NAMES IN IMG INTO THE LIST filearray
 #
@@ -47,6 +45,10 @@ insubpagearray = {}
 currentsubpages = []
 missingsubpages = []
 
+for entry in ignoredata["img"]:
+    if entry in filearray:
+        filearray.remove(entry)
+        
 for entry in jsondata['entries']:
 
     #find the highest index value in order to avoid dupes while generating
@@ -78,7 +80,7 @@ for entry in jsondata['entries']:
 
     else:
         if entry["type"] == "collection":
-            print("IT'S A COLLECTION. NOTE ITS URL")
+            #print("IT'S A COLLECTION. NOTE ITS URL")
             currentsubpages.append(entry["url"])
         else:
             print("ENTRY IS A DOC PAGE. NOTE ANY BOARDS NAMED IN ITS TEMPLATE")
@@ -86,6 +88,7 @@ for entry in jsondata['entries']:
                 if e[0] == "board":
                     print(e)
                     currentsubpages.append(e[1])
+
 
 print("FILE ARRAY SHOULD NOW ONLY CONTAIN IMAGES THAT ARE NOT INCLUDED IN JSON.")
 

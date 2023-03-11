@@ -40,9 +40,10 @@ Documentation pages are intended for detailing the progression of larger project
 #### Documentation: The Template
   The template is an array holding pairs of type-information, in the order that they should be displayed.
   -[header, "header text"] -> displays as a centered h2
+  -[link, {"url": "url.com", "text": text OR "image": img.jpeg, "alt": alt text}] -> displays a link with the given text or image
   -[text, "text to display"] -> displays as a centered div
-  -[image, "/img/name.jpeg"] -> displays as a centered image
-  -[entry, "entryname"] -> displays the entry with name "entryname"
+  -[image, {"image": "/img/name.jpeg", "alt": alt text}] -> displays as a centered image
+  -[entry, id int or "title"] -> displays the entry with the given id or title
   -[board, "x"] -> displays a board of all entries that have "x" listed in their "insubpage" array
   
 
@@ -61,9 +62,14 @@ Sorting will organize current entries by the current method. Sorts are currently
 Filtering will filter entries to only those with the relevant tag. Filters are currently limited to medium or industry. Quick links to filter by industry are also displayed in the header bar. Filter options in both the sidebar and header are autopopulated from relevant tags in the json file.
 
 
-##Installed Packages:
+##Installed Packages and Resources:
 The following packages were used in order to build this webapp:
 node.js
 react
 react-router-dom
 use-query-params
+
+The following open source fonts were installed in order to display this webapp:
+Overpass
+
+TODO: import the shared folders (studio-3d, pet pals data)
