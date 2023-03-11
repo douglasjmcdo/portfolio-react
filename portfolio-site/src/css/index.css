@@ -1,8 +1,25 @@
 body {
     margin: 0;
+    background-color: var(--neutral-light);
+}
+
+body, button, input {
+    font-family: "Overpass";
+}
+
+button {
+    background-color: var(--neutral-light);
+    border-radius: 2px;
+    border: none;
+    margin: 3px;
+
 }
 
 #collection {
     text-align: center;
     margin-top: 15px;
+}
+
+#mainpage {
+    margin: none;
 }

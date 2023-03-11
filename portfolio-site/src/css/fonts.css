@@ -1,5 +1,5 @@
-/* @font-face {
-  font-family: 'Cohaerentia';
-  src: local('Cohaerentia'), url(./fonts/cohaerentia/Cohaerentia-Regular.ttf) format('truetype');
+@font-face {
+  font-family: 'Overpass';
+  src: local('Overpass'), url(./fonts/Overpass-VariableFont_wght.ttf) format('truetype-variations');
 }
-   */
+  

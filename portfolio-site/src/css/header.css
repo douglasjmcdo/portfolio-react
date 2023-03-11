@@ -2,10 +2,11 @@
 
 .headerbar {
     width: 100%;
-    background-color: #c29eff;
+    background-color: var(--primary-light);
     padding: 0;
     padding-top: 5px;
     justify-content: center;
+    text-align: center;
 }
 
 .headertext {
@@ -13,7 +14,17 @@
     margin-right: auto;
     text-align: center;
     width: 16em;
-    font-family: sans-serif;
+    height: 195px;
+    display: inline-block;
+    overflow: visible;
+}
+
+.imghlink {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+    height: 300px;
 }
 
 .filterbar {
@@ -22,22 +33,31 @@
     padding: 0px;
     margin-top: 8px;
     margin-bottom: 0px;
-    font-family: sans-serif;
+    background-color: var(--primary-dark);
+    z-index: 2;
+    position: relative;
 }
 
 .filterbutton {
     list-style-type: none;
     display: inline;
     padding: 10px;
+    font-style: italic;
+    font-size: 20px;
+    z-index: 2;
+}
+
+.filterbutton a {
+    color: var(--primary-light);
+}
+
+.filterbutton a:hover {
+    color: var(--highlight-secondary);
 }
 
 .status {
-    background-color: yellow;
+    background-color: var(--secondary);
     display: flex;
     justify-content: space-between;
-
     padding: 4px;
-    font-family: sans-serif;
-
-
 }

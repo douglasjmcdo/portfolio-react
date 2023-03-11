@@ -2,9 +2,11 @@
     position: fixed;
     height: 100%; 
     width: 300px;
+    padding: 20px;
+    right: -340px;
     top: 0;
-    right: -300px;
-    background-color: orange;
+    background-color: var(--primary-dark);
+    color: white;
     transition: right .3s ease-in-out;
     z-index: 5;
 }
@@ -21,13 +23,17 @@
 .sortselect {
     padding: 5px;
     margin: 5px;
-    background-color: orangered;
+    background-color: var(--primary-light);
+    color: black;
+    text-align: left;
 }
 
 .filterselect {
     padding: 5px;
     margin: 5px;
-    background-color: red;
+    background-color: var(--primary-light);
+    color: black;
+    text-align: left;
 
 }
 
@@ -45,4 +51,5 @@
 .sectionheader {
     margin: 5px;
     margin-top: 8px;
+    text-align: left;
 }

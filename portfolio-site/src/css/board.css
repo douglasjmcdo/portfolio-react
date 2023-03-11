@@ -4,7 +4,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 5px;
-    padding: 5px;
+    padding: 2vw;
+    background-color: none;
 }
 
+.display-board {
+    margin: 3px 5vw;
+    /* padding: 10px 0; */
+}

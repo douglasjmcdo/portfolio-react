@@ -14,8 +14,7 @@
 .thefile {
     max-width: 80vw;
     max-height: 80vh;
-    border: 20px grey;
-    background-color: #ffffff8a;
+    background-color: var(--neutral-transluscent);
     padding: 10px;
 }
 
@@ -37,9 +36,9 @@
 }
 
 .bigtags a {
-    color: paleturquoise;
+    color: var(--primary-light);
 }
 
-a:hover {
-    color: white;
+.bigtags a:hover {
+    color: var(--highlight-secondary);
 }

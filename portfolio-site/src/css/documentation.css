@@ -1,32 +1,59 @@
+#documentation {
+    background-color: var(--neutral-light);
+    margin: 20px 0px;
+    margin-bottom: 0px;
+    padding-top: 10px;
+}
 .templatewrapper {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 10px;
-    margin: 10px 10vw;
-    margin-bottom: 10vh;
-    background-color: palegoldenrod
+    align-items: center;
+    padding: 20px 0vw;
+    margin-top: 10px;
+    padding-bottom: 20vh;
+    background-color: var(--secondary)
 }
 
 .documainheader {
     text-align: center;
-    margin: 20px;
+    margin: 20px 20vw;
+    padding: 15px;
+    background-color: var(--primary-light);
+    border: inset 10px var(--primary)
 }
 
 .dtext {
     padding: 5px;
+    margin: 10px 12vw;
 }
 
 .dheader {
-    padding-top: 10px;
     margin-bottom: 2px;
+    margin-top: 40px;
+    font-size: xx-large;
 }
 
 .dboard {
-    padding: 15px;
+    border: var(--secondary-dark);
+    border-style: solid none;
+    background-color: var(--neutral);
+    margin: 20px 0;
+    padding: 0 5vw;
+    width: 90vw;
 }
 
 .dvid {
     margin: 10px 10vw;
-    background-color: blue
+    background-color: var(--highlight-secondary)
+}
+
+.dlink {
+    font-style: italic;
+}
+
+.linkimg, .dimg {
+    max-width: 60vw;
+    padding: 5px;
+    margin: 15px;
 }
