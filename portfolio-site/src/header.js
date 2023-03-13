@@ -54,7 +54,7 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
         }
 
         if (filterstring.length > 5) {
-            fullstring = sortstring + " || " + filterstring;
+            fullstring = sortstring + "  ||  " + filterstring;
         } else {
             fullstring = sortstring;
         }
@@ -78,12 +78,13 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
 
     return (
         <div className="headerbar">
-            <Link to="/" className="headertext"><img className="imghlink" src="/../img/2023/graphic design/typography + logo/logo_vector.png"/></Link>
+            <Link to="/" className="headerlink"></Link>
+            <img className="imgheader" src="/../img/2023/graphic design/typography + logo/logo_vector.png"/>
             <ul className="filterbar">
                 { industryArray }
             </ul>
             <div className="status">
-                {status}
+                <div className="statusmessage">{status}</div>
                 <div className="searchSettings">
                     <button onClick={openSidebar}>show sidebar</button>
                     <Sidebar filters={filters} setFilters={setFilters} sorts={sorts} setSorts={setSorts} industries={industries} mediums={mediums}

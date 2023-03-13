@@ -1,8 +1,8 @@
 #documentation {
     background-color: var(--neutral-light);
-    margin: 20px 0px;
+    margin: 0px;
     margin-bottom: 0px;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 .templatewrapper {
     display: flex;
@@ -18,9 +18,10 @@
 .documainheader {
     text-align: center;
     margin: 20px 20vw;
-    padding: 15px;
     background-color: var(--primary-light);
-    border: inset 10px var(--primary)
+    border: inset 10px var(--primary);
+    padding: 15px 45px;
+    border-radius: 120px 0px;
 }
 
 .dtext {
