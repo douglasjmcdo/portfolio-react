@@ -9,9 +9,10 @@ body, button, input {
 
 button {
     background-color: var(--neutral-light);
-    border-radius: 2px;
+    border-radius: 20px;
     border: none;
-    margin: 3px;
+    /* margin: 3px; */
+    padding: 2px 9px;
 
 }
 
@@ -22,4 +23,13 @@ button {
 
 #mainpage {
     margin: none;
+}
+
+.baseheader {
+    width: 100%;
+    background-color: var(--primary-light);
+    padding: 0;
+    padding-top: 5px;
+    justify-content: center;
+    text-align: center;
 }

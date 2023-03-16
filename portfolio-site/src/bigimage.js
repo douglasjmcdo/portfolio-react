@@ -91,12 +91,14 @@ const BigImage=({info, setBig, index, bigindex, setBigindex})=>{
     
     return (
         <div className="bigimage" onClick={closeBimg}>
+            <div className="centering">
                 <img className="thefile" src={info["img"]} alt={info["alt"]}/>
                 <div className="bigtitlebar">
                     <div className="bigtitle">{info["title"]}</div>
                     <div className="bigtags">{ tags }</div>
                 </div>
                 <div className = "bigcaption">{info["caption"]}</div>
+            </div>
         </div>
     );
 }

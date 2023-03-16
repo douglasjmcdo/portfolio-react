@@ -60,13 +60,14 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
         }
 
 
-
+        console.log(fullstring)
         return fullstring;
     }
 
     //if filters or sorts change, update infostatus
     useEffect(() => {
         setStatus(infoStatus(filters, sorts));
+        console.log("status", status)
     }, [sorts, filters]);
 
     //access the sort/filter menu
@@ -77,20 +78,20 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
 
 
     return (
-        <div className="headerbar">
-            <Link to="/" className="headerlink"></Link>
-            <img className="imgheader" src="/../img/2023/graphic design/typography + logo/logo_vector.png"/>
-            <ul className="filterbar">
-                { industryArray }
-            </ul>
-            <div className="status">
-                <div className="statusmessage">{status}</div>
-                <div className="searchSettings">
-                    <button onClick={openSidebar}>show sidebar</button>
-                    <Sidebar filters={filters} setFilters={setFilters} sorts={sorts} setSorts={setSorts} industries={industries} mediums={mediums}
-                             showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+        <div className="stickyheader">
+            <div className="navbars">
+                <ul className="filterbar">
+                    { industryArray }
+                </ul>
+                <div className="status">
+                    <div className="statusmessage">{status}</div>
+                    <div className="searchSettings">
+                        <button className="sidebarbutton" onClick={openSidebar}>Show Sidebar</button>
+                    </div>
                 </div>
             </div>
+            <Sidebar filters={filters} setFilters={setFilters} sorts={sorts} setSorts={setSorts} industries={industries} mediums={mediums}
+                             showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
 
         </div>
     )

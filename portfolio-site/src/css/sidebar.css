@@ -1,11 +1,12 @@
 .sidebar {
     position: fixed;
     height: 100%; 
-    width: 300px;
+    width: 250px;
     padding: 20px;
-    right: -340px;
+    right: -300px;
     top: 0;
     background-color: var(--primary-dark);
+    /* border-left: solid 8px var(--primary-dark); */
     color: white;
     transition: right .3s ease-in-out;
     z-index: 5;
@@ -18,22 +19,27 @@
 
 .sidebar-contents {
     margin: 15px;
+    margin-top: 0px;
 }
 
 .sortselect {
-    padding: 5px;
-    margin: 5px;
-    background-color: var(--primary-light);
-    color: black;
+    padding: 0px 5px;
+    margin: 0px 5px;
+    /* background-color: var(--primary-light); */
+    /* color: black; */
     text-align: left;
+    /* border-radius: 0px 100px 0px 0px; */
+
 }
 
 .filterselect {
-    padding: 5px;
-    margin: 5px;
-    background-color: var(--primary-light);
-    color: black;
+    padding: 0px 5px;
+    margin: 0px 5px;
+    /* background-color: var(--primary-light); */
+    /* color: black; */
     text-align: left;
+    /* border-radius: 0px 0 100px 0px; */
+    /* border-radius: 100px; */
 
 }
 
@@ -50,6 +56,20 @@
 
 .sectionheader {
     margin: 5px;
-    margin-top: 8px;
+    margin-top: 10px;
     text-align: left;
+}
+
+.insbbutton {
+    margin: 3px;
+}
+
+.searchbar {
+    border-radius: 100px;
+    border: none;
+    padding: 5px 15px;
+}
+
+.form-check, .form-radio {
+    padding-left: 10px;
 }

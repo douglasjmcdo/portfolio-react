@@ -307,6 +307,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
     const SearchBar=()=>{
         return (
             <input
+                className="searchbar"
                 type="text"
                 placeholder="Search Entries"
                 onKeyUp={handleSChange}
@@ -315,7 +316,7 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
         )
     }
 
-
+ 
     //RESETTING SEARCH, SORT AND FILTER
     function resetSearch() {
         setReset(true);
@@ -352,11 +353,11 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
                 <div className="sortselect">{radio}</div>
                 <div className="sectionheader">Filter by:</div>
                 <div className="filterselect">{checks}</div>
-                <button onClick={resetSearch}> Reset Search</button>
-                <button onClick={closeSidebar}>Close Sidebar</button>
+                <button className="insbbutton" onClick={resetSearch}> Reset Search</button>
+                <button className="insbbutton" onClick={closeSidebar}>Close Sidebar</button>
             </div>
         </div>
     );
 }
 
-export default Sidebar;
+export default Sidebar; 

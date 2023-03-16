@@ -9,6 +9,7 @@ import {
   ObjectParam,
   withDefault
 } from 'use-query-params';
+import { Link } from 'react-router-dom';
 
 
 const Layout = () => {
@@ -64,8 +65,18 @@ const Layout = () => {
     setData(importJson(entries));
   }, []);
 
+  const BaseHeader=()=> {
+    return (
+      <div class="baseheader">
+        <Link to="/" className="headerlink"></Link>
+        <img className="imgheader" src="/../img/2023/graphic design/typography + logo/logo_vector.png"/>
+      </div>
+    )
+  }
+
     return (
         <div className="app">
+          <BaseHeader/>
           <Header industries={industries} mediums={mediums} setFilters={setFilters} filters={filters} sorts={sorts} setSorts={setSorts}/>
           <Outlet context={{data, filters, sorts}}/>
       </div>

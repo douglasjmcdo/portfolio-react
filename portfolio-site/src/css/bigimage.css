@@ -1,19 +1,21 @@
 .bigimage {
     position: fixed;
     width: 100vw;
-    height: 95vh;
+    height: 90vh;
     background-color: rgba(0, 0, 0, 0.75);
     color: white;
     top: 0;
     left: 0;
     text-align: center;
-    padding: 5vh 0 0 0;
+    padding: 5vh 0;
     z-index: 2;
+    display: flex;
+    justify-content: center;
 }
 
 .thefile {
     max-width: 80vw;
-    max-height: 80vh;
+    max-height: 75vh;
     background-color: var(--neutral-transluscent);
     padding: 10px;
 }
@@ -41,4 +43,8 @@
 
 .bigtags a:hover {
     color: var(--highlight-secondary);
+}
+
+.centering {
+    margin: auto;
 }

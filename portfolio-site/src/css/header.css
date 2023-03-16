@@ -1,14 +1,5 @@
 @import url('fonts.css');
 
-.headerbar {
-    width: 100%;
-    background-color: var(--primary-light);
-    padding: 0;
-    padding-top: 5px;
-    justify-content: center;
-    text-align: center;
-}
-
 .headerlink {
     margin-left: auto;
     margin-right: auto;
@@ -68,10 +59,21 @@
     justify-content: space-between;
     padding: 4px;
     opacity: 95%;
+    white-space: pre-wrap;
 }
 
 .statusmessage {
     opacity: 100%;
     margin: auto 0;
     padding-left: 5px;
+}
+
+.sidebarbutton {
+    margin: 1px 5px;
+}
+
+.stickyheader {
+    position: sticky;
+    z-index: 2;
+    top: 0;
 }
