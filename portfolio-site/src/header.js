@@ -68,7 +68,6 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
     //if filters or sorts change, update infostatus
     useEffect(() => {
         setStatus(infoStatus(filters, sorts));
-        console.log("status", status)
     }, [sorts, filters]);
 
     //access the sort/filter menu

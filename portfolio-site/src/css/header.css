@@ -75,5 +75,5 @@
 .stickyheader {
     position: sticky;
     z-index: 2;
-    top: 0;
+    top: -1px;
 }

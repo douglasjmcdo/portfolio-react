@@ -69,7 +69,7 @@ const Layout = () => {
     return (
       <div class="baseheader">
         <Link to="/" className="headerlink"></Link>
-        <img className="imgheader" src="/../img/2023/graphic design/typography + logo/logo_vector.png"/>
+        <img className="imgheader" src="/../img/headerlogo.png" alt="logo reading DJMCDO"/>
       </div>
     )
   }

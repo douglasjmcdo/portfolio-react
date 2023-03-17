@@ -19,11 +19,12 @@ button {
 
 #collection {
     text-align: center;
-    margin-top: 15px;
+    padding-top: 15px;
 }
 
 #mainpage {
     margin: none;
+    padding-top: 10px;
 }
 
 .baseheader {

@@ -1,7 +1,8 @@
 .collmainheader {
         text-align: center;
         padding: 15px 45px;
-        margin: 20px 20vw;        
+        margin: 20px 20vw;      
+        margin-bottom: 0px;  
         background-color: var(--primary-light);
         border: inset 10px var(--primary);
         border-radius: 120px 0px;
