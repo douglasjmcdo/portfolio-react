@@ -10,6 +10,7 @@
     color: white;
     transition: right .3s ease-in-out;
     z-index: 5;
+    border-left: solid 8px var(--primary)
 }
 
 .sidebar.open {
@@ -55,19 +56,44 @@
 }
 
 .sectionheader {
-    margin: 5px;
+    margin: 5px 0px;
     margin-top: 10px;
     text-align: left;
 }
 
+.typewrapbox, .industrywrapbox, .mediumwrapbox {
+    display: flex;
+    flex-flow: column wrap;
+    height: min-content;
+}
+
 .insbbutton {
     margin: 3px;
+    color: black;
+}
+
+.resetbtn {
+    background-color: var(--primary-light);
+}
+
+.closebtn {
+    background-color: var(--secondary);
+}
+
+.buttonbox {
+    margin: 3px;
+    padding: 3px;
+    margin-top: 9px;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .searchbar {
     border-radius: 100px;
     border: none;
     padding: 5px 15px;
+    width:190px;
 }
 
 .form-check, .form-radio {

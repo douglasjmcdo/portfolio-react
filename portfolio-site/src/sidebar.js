@@ -208,62 +208,40 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
             }
         }
 
-        function setNewChecks() {
-            var newIndChecks = [];
-
-            newIndChecks.push(<div className="checkmarkheader topcheckmarkheader" key="typeh">SUB-PAGES:</div>);
-            Object.entries(checkSValue).forEach(([key, value]) => {
-                newIndChecks.push(
+        function returnwrapper(checkval, changeval) {
+            var cholder = [];
+            Object.entries(checkval).forEach(([key, value]) => {
+                cholder.push(
                     <div className="form-check" key={key}>
                     <label>
                         <input
                             type="checkbox"
                             name={key}
                             checked={value}
-                            onChange={(event) => handleFChange(event, "type")}
+                            onChange={(event) => handleFChange(event, changeval)}
                             className="form-check-input"
                         />
                         { key }
                     </label>
                 </div>
                 );
-        });            
+            });  
+            var classstring = changeval + "wrapbox";
+            return (<div className={classstring}>{cholder}</div>)  
+        }
+
+        function setNewChecks() {
+            var newIndChecks = [];
+
+            newIndChecks.push(<div className="checkmarkheader topcheckmarkheader" key="typeh">SUB-PAGES:</div>);
+            newIndChecks.push(returnwrapper(checkSValue, "type"));  
 
             newIndChecks.push(<div className="checkmarkheader" key="indh">INDUSTRIES:</div>);
-            Object.entries(checkIValue).forEach(([key, value]) => {
-                    newIndChecks.push(
-                        <div className="form-check" key={key}>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name={key}
-                                checked={value}
-                                onChange={(event) => handleFChange(event, "industry")}
-                                className="form-check-input"
-                            />
-                            { key }
-                        </label>
-                    </div>
-                    );
-            });
+            newIndChecks.push(returnwrapper(checkIValue, "industry"));
+
     
             newIndChecks.push(<div className="checkmarkheader" key="mediumh">MEDIUMS:</div>);
-            Object.entries(checkMValue).forEach(([key, value]) => {
-                    newIndChecks.push(
-                        <div className="form-check" key={key}>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name={key}
-                                checked={value}
-                                onChange={(event) => handleFChange(event, "medium")}
-                                className="form-check-input"
-                            />
-                            { key }
-                        </label>
-                    </div>
-                    );
-            });
+            newIndChecks.push(returnwrapper(checkMValue, "medium"));
     
             setChecks(newIndChecks);
         }
@@ -353,8 +331,10 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
                 <div className="sortselect">{radio}</div>
                 <div className="sectionheader">Filter by:</div>
                 <div className="filterselect">{checks}</div>
-                <button className="insbbutton" onClick={resetSearch}> Reset Search</button>
-                <button className="insbbutton" onClick={closeSidebar}>Close Sidebar</button>
+                <div class="buttonbox">
+                    <button className="insbbutton resetbtn" onClick={resetSearch}> Reset Search</button>
+                    <button className="insbbutton closebtn" onClick={closeSidebar}>Close Sidebar</button>
+                </div>
             </div>
         </div>
     );

@@ -44,17 +44,18 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
         if (filtering && Object.entries(filtering).length > 0) {
             filterstring = "Filtered by: ";
             Object.entries(filtering).forEach(([key, value]) => {
+                value = value.replaceAll(", ", "\", \"");
                 filterstring +="\"" + value + "\", ";
             });
             filterstring = filterstring.substring(0, filterstring.length - 2);
         }
 
         if (sorting) {
-            sortstring = "Sorted by: " + sorting;
+            sortstring = "❖  Sorted by: " + sorting + "  ❖";
         }
 
         if (filterstring.length > 5) {
-            fullstring = sortstring + "  ||  " + filterstring;
+            fullstring = sortstring + "  " + filterstring + "  ❖";
         } else {
             fullstring = sortstring;
         }

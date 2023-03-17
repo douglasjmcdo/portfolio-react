@@ -8,7 +8,8 @@ body, button, input {
 }
 
 button {
-    background-color: var(--neutral-light);
+    background-color: var(--secondary-dark);
+    color: white;
     border-radius: 20px;
     border: none;
     /* margin: 3px; */
