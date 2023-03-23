@@ -1,0 +1,22 @@
+.collmainheader {
+        text-align: center;
+        padding: 15px 45px;
+        margin: 20px 20vw;      
+        margin-bottom: 0px;  
+        background-color: var(--primary-light);
+        border: inset 10px var(--primary);
+        border-radius: 120px 0px;
+}
+/* 
+.ch2 {
+    margin-left: 10px;
+
+}
+
+.ch3 {
+    margin-right: 10px;
+} */
+/* 
+.ch2, .ch3 {
+    padding: 0px 30px;
+} */

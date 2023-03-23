@@ -1,0 +1,50 @@
+.bigimage {
+    position: fixed;
+    width: 100vw;
+    height: 90vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding: 5vh 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.thefile {
+    max-width: 80vw;
+    max-height: 75vh;
+    background-color: var(--neutral-transluscent);
+    padding: 10px;
+}
+
+.bigtitlebar {
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+    padding: 0 25vw;
+    margin: 8px 0 4px 0;
+}
+
+.bigcaption {
+    width: 40vw;
+    padding: 0 30vw;
+}
+
+.hashlink {
+    padding: 5px;
+}
+
+.bigtags a {
+    color: var(--primary-light);
+}
+
+.bigtags a:hover {
+    color: var(--highlight-secondary);
+}
+
+.centering {
+    margin: auto;
+}

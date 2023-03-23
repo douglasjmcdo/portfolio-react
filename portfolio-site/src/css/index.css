@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    background-color: var(--neutral-light);
+}
+
+body, button, input {
+    font-family: "Overpass";
+}
+
+button {
+    background-color: var(--secondary-dark);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    /* margin: 3px; */
+    padding: 2px 9px;
+
+}
+
+#collection {
+    text-align: center;
+    padding-top: 15px;
+}
+
+#mainpage {
+    margin: none;
+    padding-top: 10px;
+}
+
+.baseheader {
+    width: 100%;
+    background-color: var(--primary-light);
+    padding: 0;
+    padding-top: 5px;
+    justify-content: center;
+    text-align: center;
+}
