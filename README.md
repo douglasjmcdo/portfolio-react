@@ -17,19 +17,19 @@ The main board is the board that displays on the home page. Most entries will di
 This app distinguishes between three different types of projects-- individual images, collections, and detailed documentation pages. All three types are displayed in boards. Individual images can be clicked on for full size, while collections and documentation pages route to a new page in order to display their full contents when clicked on.
 
 ### Entry: JSON Object Format
-  id: unique integer value
-  title: "Image Title" 
-  url: "for collections and doc pages"
-  type: individual / documentation / collection
-  medium: [ digital / traditional, water color / 3d ]
-  industry: [ ui / front-end / illustration, comics ]
-  insubpage: [ 2d-studio, observational / null ]
-  onmainpage: true
-  date: 2017
-  img: "../img/img.jpeg"
-  alt: "alt text"
-  template: [[text, "Documentation Page Template"], [board, "documentboard"]]
-  caption: ""
+  id: unique integer value  
+  title: "Image Title"   
+  url: "for collections and doc pages"  
+  type: individual / documentation / collection  
+  medium: [ digital / traditional, water color / 3d ]  
+  industry: [ ui / front-end / illustration, comics ]  
+  insubpage: [ 2d-studio, observational / null ]  
+  onmainpage: true  
+  date: 2017  
+  img: "../img/img.jpeg"  
+  alt: "alt text"  
+  template: [[text, "Documentation Page Template"], [board, "documentboard"]]  
+  caption: ""  
 
 ### Collections
 Collections contain boards that are solely populated with entries tagged for that board. Collections will display at the route "/collection/collection-name". Entries featured in collections may also display on the main board. Add an entry to a collection by putting the collection name in that entry's "insubpage" array.
@@ -38,13 +38,13 @@ Collections contain boards that are solely populated with entries tagged for tha
 Documentation pages are intended for detailing the progression of larger projects. Documentation pages will display at the route "/documentation/page-name". These pages populate from a template contained in their metadata. These pages can contain headers, text, images, boards, and entries. Entries featured in documentation pages may also display on the main board.
 
 #### Documentation: The Template
-  The template is an array holding pairs of type-information, in the order that they should be displayed.
-  -[header, "header text"] -> displays as a centered h2
-  -[link, {"url": "url.com", "text": text OR "image": img.jpeg, "alt": alt text}] -> displays a link with the given text or image
-  -[text, "text to display"] -> displays as a centered div
-  -[image, {"image": "/img/name.jpeg", "alt": alt text}] -> displays as a centered image
-  -[entry, id int or "title"] -> displays the entry with the given id or title
-  -[board, "x"] -> displays a board of all entries that have "x" listed in their "insubpage" array
+  The template is an array holding pairs of type-information, in the order that they should be displayed.   
+  -[header, "header text"] -> displays as a centered h2  
+  -[link, {"url": "url.com", "text": text OR "image": img.jpeg, "alt": alt text}] -> displays a link with the given text or image  
+  -[text, "text to display"] -> displays as a centered div  
+  -[image, {"image": "/img/name.jpeg", "alt": alt text}] -> displays as a centered image  
+  -[entry, id int or "title"] -> displays the entry with the given id or title   
+  -[board, "x"] -> displays a board of all entries that have "x" listed in their "insubpage" array  
   
 
 
@@ -63,13 +63,13 @@ Filtering will filter entries to only those with the relevant tag. Filters are c
 
 
 ## Installed Packages and Resources:
-The following packages were used in order to build this webapp:
-node.js
-react
-react-router-dom
-use-query-params
-
-The following open source fonts were installed in order to display this webapp:
-Overpass
-
+The following packages were used in order to build this webapp:  
+node.js  
+react  
+react-router-dom  
+use-query-params  
+  
+The following open source fonts were installed in order to display this webapp:  
+Overpass  
+  
 TODO: import the shared folders (studio-3d, pet pals data)
