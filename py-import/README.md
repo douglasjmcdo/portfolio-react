@@ -1,5 +1,5 @@
 ## PY-IMPORT APP
-This app is a support app for the portfolio-react webapp. This app helps users import images to the data.json file so that they autopopulate properly on the app
+This app is a support app for the portfolio-react webapp. This app helps users import images so that they autopopulate properly on the app. Images must first be placed in public/img.
 
 ## Overview:
 This is a python app that uses tkinter to provide a simple GUI form. The app compares data.json to the contents of the /img folder, makes a list of all discrepancies between the two, and walks the user through each discrepancy unless the discrepancy is marked in ignore.json.

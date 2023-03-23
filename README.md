@@ -1,9 +1,9 @@
 # portfolio-react is exactly what it sounds like
-I built this single-page React app to serve as my art portfolio. It displays my own artwork across
+I built this single-page React app to serve as my art portfolio. 
 I retain copyright for all art and code.
 
 ## Overview:
-This app displays art projects in a responsive grid. These projects can be sorted or filtered by title, date, medium, or industry. The app is entirely autopopulated from a json file containing each entry and its metadata.
+This app displays art projects in a responsive grid. These projects can be sorted or filtered by title, date, medium, or industry. The app is entirely autopopulated from a json file containing each entry and its metadata. The json file can be populated by placing the images in public/src and using the py-import python program to process them. 
 
 
 ## Boards
