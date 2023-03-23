@@ -58,11 +58,11 @@ Searching with the search bar will filter entries to only those that contain the
 ### Sorting
 Sorting will organize current entries by the current method. Sorts are currently limited to title, date, medium or industry. If sorting by medium or industry, entries will be sorted based on the first one listed in their array of mediums or industries respectively.
 
-###Filtering
+### Filtering
 Filtering will filter entries to only those with the relevant tag. Filters are currently limited to medium or industry. Quick links to filter by industry are also displayed in the header bar. Filter options in both the sidebar and header are autopopulated from relevant tags in the json file.
 
 
-##Installed Packages and Resources:
+## Installed Packages and Resources:
 The following packages were used in order to build this webapp:
 node.js
 react
