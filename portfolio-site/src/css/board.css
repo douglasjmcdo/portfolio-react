@@ -1,0 +1,14 @@
+
+.board-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2vw;
+    background-color: none;
+}
+
+.display-board {
+    margin: 3px 5vw;
+    /* padding: 10px 0; */
+}
