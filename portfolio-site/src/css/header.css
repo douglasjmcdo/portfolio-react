@@ -60,6 +60,9 @@
     padding: 4px;
     opacity: 95%;
     white-space: pre-wrap;
+    transition: opacity 0.5s ease-out 20ms;
+
+
 }
 
 .statusmessage {

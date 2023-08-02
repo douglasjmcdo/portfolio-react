@@ -75,7 +75,7 @@ const Board=({className, data, filters, sorts, boardname})=>{
         function containsFilter(a, filterkey, filtervalue) {
             //search: 
             if (filterkey === "search") {
-                console.log("SEARCH");
+                //console.log("SEARCH");
                 let isMatch = false;
 
                 //for each value, see if the filtervalue exists in it. if yes to any, mark as match
@@ -86,7 +86,22 @@ const Board=({className, data, filters, sorts, boardname})=>{
                         //check each element in the array; return true if any match
                         let inArray = false;
                         inArray = el.find((inel) => {
-                            return inel.toLowerCase().includes(filtervalue);
+                            if (typeof(inel) === "string") {
+                                return inel.toLowerCase().includes(filtervalue);
+                            }
+                            //edge cases: documentation boards can have objs nested up to 3 deep
+                            //this is specifically for documentation types link and image
+                            else if(typeof(inel) === "object" && typeof(inel[1]) === "object") {
+                                return Object.values(inel[1]).find((inel2) => {
+                                    return inel2.toLowerCase().includes(filtervalue);
+                                });
+                            } else if (typeof(inel) === "object") {
+                                //inel[1] is a string
+                                return inel[1].toLowerCase().includes(filtervalue);
+                            }else { 
+                                //inel is an int or otherwise easily converted
+                                return inel.toString().toLowerCase().includes(filtervalue);
+                            }
                         })
                         return inArray;
                     } else {

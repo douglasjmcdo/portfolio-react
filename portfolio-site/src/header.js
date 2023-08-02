@@ -1,14 +1,27 @@
 import React, {useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './css/header.css';
 import Sidebar from './sidebar';
+
 //import '/../img/2023/graphic design/typography + logo/logo_vector.png';
 
 //todo: import filterbar options from data.json?
 const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
+    let location = useLocation();
     const [industryArray, setIndustryArray] = useState(["front-end", "illustration"]);
     const [status, setStatus] = useState("null");
     const [showSidebar, setShowSidebar] = useState(false);
+    const [isDocumentation, setIsDocumentation] = useState(false);
+
+    useEffect(() => {
+        console.log('locatoin useeffect triggered', location.pathname);
+        function getIsDocumentation(pathname) {
+            if (pathname.split('/')[1] === "documentation") 
+                { console.log("TRUE AAAAA"); return true; } 
+                else { return false; }
+        }
+        setIsDocumentation(getIsDocumentation(location.pathname));
+    }, [location.pathname]);
 
     //on industries load-in, populate industryArray
     useEffect(() => {
@@ -28,6 +41,7 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
 
         populateIndustryArray();
     }, [industries]);
+
 
 
     //
@@ -80,10 +94,10 @@ const Header=({industries, mediums, setFilters, filters, sorts, setSorts})=>{
     return (
         <div className="stickyheader">
             <div className="navbars">
-                <ul className="filterbar">
+                <ul className="filterbar" key="0">
                     { industryArray }
                 </ul>
-                <div className="status">
+                <div className="status" style={isDocumentation ? {opacity: 0 } : {opacity: 1 }}>
                     <div className="statusmessage">{status}</div>
                     <div className="searchSettings">
                         <button className="sidebarbutton" onClick={openSidebar}>Show Sidebar</button>

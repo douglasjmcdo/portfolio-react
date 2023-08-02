@@ -255,7 +255,9 @@ const Sidebar=({filters, setFilters, sorts, setSorts, industries, mediums, showS
     function handleSChange(changeEvent) {
         //changeEvent.preventDefault();
         if (changeEvent.key === 'Enter'){
-            setSearch(changeEvent.target.value);
+            var newsearch = changeEvent.target.value;
+            newsearch = newsearch.toString().toLowerCase();
+            setSearch(newsearch);
             console.log("new search");
         }
     }

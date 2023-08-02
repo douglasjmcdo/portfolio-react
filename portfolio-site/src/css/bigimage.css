@@ -28,6 +28,10 @@
     margin: 8px 0 4px 0;
 }
 
+.bigtitle {
+    font-weight: bold;
+}
+
 .bigcaption {
     width: 40vw;
     padding: 0 30vw;
