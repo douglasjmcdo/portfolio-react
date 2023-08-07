@@ -46,7 +46,8 @@
 
 .dvid {
     margin: 10px 10vw;
-    background-color: var(--highlight-secondary)
+    background-color: var(--highlight-secondary);
+    max-height: 600px;
 }
 
 .dlink {

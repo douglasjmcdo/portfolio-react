@@ -79,7 +79,7 @@ const Documentation = () => {
                     case "video":
                         let vidtype = content.split(".");
                         vidtype = "video/" + vidtype[vidtype.length - 1];
-                        console.log(vidtype);
+                        console.log("VIDEO", content, vidtype);
 
                         nextdiv = (
                         <video className="dvid" key={content}
@@ -88,6 +88,15 @@ const Documentation = () => {
                             <source src={content} type={vidtype}/>
                         </video>
                         )
+                        if (vidtype == "video/mkv") {
+                            nextdiv = (
+                                <video className="dvid" key={content}
+                                controls
+                                preload="auto"
+                                src={content}>
+                                </video>
+                            )
+                        }
                         break;
                     default:
                         console.log("no case for ", type);

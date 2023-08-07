@@ -4,10 +4,10 @@
 import json
 jsondata = ""
 ignoredata = ""
-with open('../portfolio-site/src/data.json', "r") as datafile:
+with open('../portfolio-site/src/data.json', "r", encoding="utf8") as datafile:
     jsondata = json.load(datafile)
 
-with open('../portfolio-site/src/ignore.json', "r") as datafile:
+with open('../portfolio-site/src/ignore.json', "r", encoding="utf8") as datafile:
     ignoredata = json.load(datafile)
 
 #
@@ -399,7 +399,7 @@ class TheForm(Frame):
         }
         
         #thejson = json.dump(newsubmit)
-        with open('../portfolio-site/src/data.json', "r+") as datafile:
+        with open('../portfolio-site/src/data.json', "r+", encoding="utf8") as datafile:
             ogdata = json.load(datafile)
             ogdata["entries"].append(newsubmit)
             datafile.seek(0)
@@ -423,7 +423,7 @@ class TheForm(Frame):
         global ignoredata
         ignoredata["img"].append(filearray[currentimg])
         
-        with open('../portfolio-site/src/ignore.json', "r+") as datafile:
+        with open('../portfolio-site/src/ignore.json', "r+", encoding="utf8") as datafile:
             datafile.seek(0)
             json.dump(ignoredata, datafile, indent=4)
 
@@ -592,7 +592,7 @@ class SubForm(Frame):
 
         #TODO: thejson dump!
         
-        with open('../portfolio-site/src/data.json', "r+") as datafile:
+        with open('../portfolio-site/src/data.json', "r+", encoding="utf8") as datafile:
             ogdata = json.load(datafile)
             ogdata["entries"].append(newsubmit)
             datafile.seek(0)
@@ -616,7 +616,7 @@ class SubForm(Frame):
         global ignoredata
         ignoredata["subpage"].append(missingsubpages[currentimg])
         
-        with open('../portfolio-site/src/ignore.json', "r+") as datafile:
+        with open('../portfolio-site/src/ignore.json', "r+", encoding="utf8") as datafile:
             datafile.seek(0)
             json.dump(ignoredata, datafile, indent=4)
 
